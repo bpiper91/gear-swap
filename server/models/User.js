@@ -26,6 +26,7 @@ const userSchema = new Schema(
         location: {
             type: String
         },
+        // image: ???   | need to figure out how to implement avatar photos
         listings: [
             {
                 type: Schema.Types.ObjectId,

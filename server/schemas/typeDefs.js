@@ -90,10 +90,10 @@ const typeDefs = gql`
         deleteGroup(groupName: String!): Group
         createListing(title: String!, description: String, value: Int, groupName: String!): Listing
         deleteListing(_id: ID!): Listing
-        createSwap(proposerListings: [Listing], proposerCash: Int, responder: User!, responderListings: [Listing], responderCash: Int): Swap
+        createSwap(proposerListings: [String], proposerCash: Int, responder: String!, responderListings: [String], responderCash: Int): Swap
         updateSwap(_id: ID!): Swap
         deleteSwap(_id: ID!): Swap
-        createMessage(receiver: User!, messageText: String!, relevantListing: Listing): Message
+        createMessage(receiver: String!, messageText: String!, relevantListing: String): Message
         deleteMessage(_id: ID!): Message
         createComment(commentText: String!): Comment
         deleteComment(_id: ID!): Comment

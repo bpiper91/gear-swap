@@ -111,12 +111,16 @@ const resolvers = {
 
         },
         createGroup: async (parent, args, context) => {
-            if (context.user) {
-                const group = await Group.create({ ...args, owners: [context.user._id] });
-                return group;
-            };
+            // replace mutation with this after testing
+            // if (context.user) {
+            //     const group = await Group.create({ ...args, owners: [context.user._id], admins: [context.user._id] });
+            //     return group;
+            // };
 
-            throw new AuthenticationError('Must be logged in to do that');
+            // throw new AuthenticationError('Must be logged in to do that');
+
+                const group = await Group.create({ ...args, owners: ['636193b03c809a462e4c4ad6'], admins: ['636193b03c809a462e4c4ad6'] });
+                return group;
         },
         updateGroup: async () => {
 
@@ -125,11 +129,32 @@ const resolvers = {
 
         },
         createListing: async (parent, args, context) => {
-            if (context.user) {
-                const listing = await Listing.create({ ...args, creator: context.user._id });
+            // replace mutation with this after testing
+            // if (context.user) {
+            //     const listing = await Listing.create({ ...args, creator: context.user._id });
+
+            //     await User.findByIdAndUpdate(
+            //         { _id: context.user._id },
+            //         { $push: { listings: listing._id } },
+            //         { new: true }
+            //     );
+
+            //     await Group.findOneAndUpdate(
+            //         { groupName: args.groupName },
+            //         { $push: { listings: listing._id } },
+            //         { new: true }
+            //     );
+
+            //     return listing;
+            // };
+
+            // throw new AuthenticationError('Must be logged in to do that');
+
+
+                const listing = await Listing.create({ ...args, creator: '636193b03c809a462e4c4ad6' });
 
                 await User.findByIdAndUpdate(
-                    { _id: context.user._id },
+                    { _id: '636193b03c809a462e4c4ad6' },
                     { $push: { listings: listing._id } },
                     { new: true }
                 );
@@ -141,9 +166,6 @@ const resolvers = {
                 );
 
                 return listing;
-            };
-
-            throw new AuthenticationError('Must be logged in to do that');
         },
         deleteListing: async () => {
 

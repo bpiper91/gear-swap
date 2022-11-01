@@ -1,0 +1,50 @@
+[
+    { 
+        "_id": "101",
+        "firstName": "Jeff", 
+        "lastName": "Smith",
+        "email": "jsmith@email.com", 
+        "password": "password1234", 
+        "location": "Chapel Hill",
+        "listings": [], 
+        "activeSwaps": [],
+        "completedSwaps": 2,
+        "messages": []
+    },
+    { 
+        "_id": "102",
+        "firstName": "Jane", 
+        "lastName": "Hancock",
+        "email": "jhancock@email.com", 
+        "password": "password1234", 
+        "location": "Cary",
+        "listings": [], 
+        "activeSwaps": [],
+        "completedSwaps": 0,
+        "messages": []
+    },
+    { 
+        "_id": "103",
+        "firstName": "Juan", 
+        "lastName": "Ramirez",
+        "email": "jramirez@email.com", 
+        "password": "password1234", 
+        "location": "Durham",
+        "listings": [], 
+        "activeSwaps": [],
+        "completedSwaps": 1,
+        "messages": []
+    },
+    { 
+        "_id": "104",
+        "firstName": "Samantha", 
+        "lastName": "Grace",
+        "email": "sgrace@email.com", 
+        "password": "password1234", 
+        "location": "Raleigh",
+        "listings": [], 
+        "activeSwaps": [],
+        "completedSwaps": 1,
+        "messages": []
+    }
+]

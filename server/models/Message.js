@@ -1,4 +1,6 @@
 const { Schema, model } = require('mongoose');
+const commentSchema = require('./Comment');
+const dateFormat = require('../utils/dateFormat');
 
 const messageSchema = new Schema(
     {
@@ -25,17 +27,23 @@ const messageSchema = new Schema(
         ],
         relevantListing: {
             type: Schema.Types.ObjectId
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: timestamp => dateFormat(timestamp)
         }
     },
     {
         toJSON: {
-            virtuals: true
+            virtuals: true,
+            getters: true
         }
     }
 );
 
 // get number of comments
-userSchema.virtual('commentsCount').get(function () {
+messageSchema.virtual('commentsCount').get(function () {
     return this.comments.length;
 });
 

@@ -1,0 +1,14 @@
+[
+    {
+        "groupName": "NC Triangle Music Swappers",
+        "description": "Musical instrument and accessory gear swap for Raleigh, Durham, Chapel Hill, and the surrounding area",
+        "location": "NC Triangle",
+        "isPublic": true,
+        "listings": [],
+        "users": ["101", "102", "103", "104"],
+        "owners": ["101"],
+        "admins": ["101", "102"],
+        "activeSwaps": [],
+        "messages": []
+    }
+]

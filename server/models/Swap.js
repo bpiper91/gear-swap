@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const swapSchema = new Schema(
     {
@@ -14,7 +15,7 @@ const swapSchema = new Schema(
             }
         ],
         proposerCash: {
-            type: Int
+            type: Number
         },
         responder: {
             type: Schema.Types.ObjectId,
@@ -28,7 +29,7 @@ const swapSchema = new Schema(
             }
         ],
         responderCash: {
-            type: Int
+            type: Number
         },
         swapMessage: {
             type: Schema.Types.ObjectId,
@@ -39,6 +40,16 @@ const swapSchema = new Schema(
         },
         isCompleted: {
             type: Boolean
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: timestamp => dateFormat(timestamp)
+        }
+    },
+    {
+        toJSON: {
+            getters: true
         }
     }
 );

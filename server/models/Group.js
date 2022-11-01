@@ -64,12 +64,12 @@ const groupSchema = new Schema(
 );
 
 // get number of users
-userSchema.virtual('usersCount').get(function () {
+groupSchema.virtual('usersCount').get(function () {
     return this.users.length;
 });
 
 // get number of listings
-userSchema.virtual('listingsCount').get(function () {
+groupSchema.virtual('listingsCount').get(function () {
     return this.listings.length;
 });
 

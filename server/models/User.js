@@ -38,12 +38,9 @@ const userSchema = new Schema(
                 ref: 'Swap'
             }
         ],
-        completedSwaps: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Swap'
-            }
-        ],
+        completedSwaps: {
+            type: Number
+        },
         messages: [
             {
                 type: Schema.Types.ObjectId,
@@ -81,11 +78,6 @@ userSchema.virtual('listingCount').get(function () {
 // get number of active swap proposals
 userSchema.virtual('activeSwapsCount').get(function () {
     return this.activeSwaps.length;
-});
-
-// get number of completed swaps
-userSchema.virtual('completedSwapsCount').get(function () {
-    return this.completedSwaps.length;
 });
 
 const User = model('User', userSchema);

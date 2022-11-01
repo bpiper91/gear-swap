@@ -13,7 +13,7 @@ const listingSchema = new Schema(
             trim: true
         },
         value: {
-            type: Int
+            type: Number
         },
         creator: {
                 type: Schema.Types.ObjectId,

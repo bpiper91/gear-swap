@@ -32,15 +32,15 @@ const typeDefs = gql`
         title: String!
         description: String!
         value: Int
-        creator: User!
+        creator: String!
     }
 
     type Swap {
         _id: ID
-        proposer: User!
+        proposer: String!
         proposerListings: [Listing]
         proposerCash: Int
-        responder: User!
+        responder: String!
         responderListings: [Listing]
         responderCash: Int
         swapMessage: Message
@@ -51,8 +51,8 @@ const typeDefs = gql`
 
     type Message {
         _id: ID
-        sender: User!
-        receiver: User!
+        sender: String!
+        receiver: String!
         messageText: String!
         comments: [Comment]
         relevantListing: Listing
@@ -60,7 +60,7 @@ const typeDefs = gql`
 
     type Comment {
         _id: ID
-        commenter: User!
+        commenter: String!
         commentText: String!
     }
 
@@ -85,10 +85,10 @@ const typeDefs = gql`
         logIn(email: String!, password: String!): Auth
         updateUser(_id: ID!): User
         deleteUser(_id: ID!): User
-        createGroup(groupName: String!): Group
+        createGroup(groupName: String!, description: String, location: String, isPublic: Boolean): Group
         updateGroup(groupName: String!): Group
         deleteGroup(groupName: String!): Group
-        createListing(title: String!, description: String!, value: Int): Listing
+        createListing(title: String!, description: String, value: Int, groupName: String!): Listing
         deleteListing(_id: ID!): Listing
         createSwap(proposerListings: [Listing], proposerCash: Int, responder: User!, responderListings: [Listing], responderCash: Int): Swap
         updateSwap(_id: ID!): Swap

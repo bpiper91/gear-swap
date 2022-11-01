@@ -45,7 +45,7 @@ const resolvers = {
                 .populate('proposerListings')
                 .populate('responderListings');
 
-            if (context.user._id === dbSwap.proposer._id || context.user._id === dbSwap.responder._id) {
+            if (context.user._id === dbSwap.proposer || context.user._id === dbSwap.responder) {
                 return dbSwap;
             };
 
@@ -64,7 +64,7 @@ const resolvers = {
             const dbMessage = await Message.findOne({ _id })
                 .populate('comments');
             
-            if (context.user._id === dbMessage.sender._id || context.user._id === dbMessage.receiver._id) {
+            if (context.user._id === dbMessage.sender || context.user._id === dbMessage.receiver) {
                 return dbMessage;
             };
 
@@ -82,11 +82,27 @@ const resolvers = {
     },
 
     Mutation: {
-        createUser: async () => {
+        createUser: async (parent, args) => {
+            const user = await User.create(args);
+            const token = signToken(user);
 
+            return { token, user };
         },
-        logIn: async () => {
+        logIn: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
 
+            if (!user) {
+                throw new AuthenticationError('Incorrect login credentials');
+            };
+
+            const correctPassword = await user.isCorrectPassword(password);
+
+            if (!correctPassword) {
+                throw new AuthenticationError('Incorrect login credentials');
+            };
+
+            const token = signToken(user);
+            return { token, user };
         },
         updateUser: async () => {
 
@@ -94,8 +110,13 @@ const resolvers = {
         deleteUser: async () => {
 
         },
-        createGroup: async () => {
+        createGroup: async (parent, args, context) => {
+            if (context.user) {
+                const group = await Group.create({ ...args, owners: [context.user._id] });
+                return group;
+            };
 
+            throw new AuthenticationError('Must be logged in to do that');
         },
         updateGroup: async () => {
 
@@ -103,8 +124,26 @@ const resolvers = {
         deleteGroup: async () => {
 
         },
-        createListing: async () => {
+        createListing: async (parent, args, context) => {
+            if (context.user) {
+                const listing = await Listing.create({ ...args, creator: context.user._id });
 
+                await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { listings: listing._id } },
+                    { new: true }
+                );
+
+                await Group.findOneAndUpdate(
+                    { groupName: args.groupName },
+                    { $push: { listings: listing._id } },
+                    { new: true }
+                );
+
+                return listing;
+            };
+
+            throw new AuthenticationError('Must be logged in to do that');
         },
         deleteListing: async () => {
 

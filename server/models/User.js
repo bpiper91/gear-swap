@@ -40,7 +40,8 @@ const userSchema = new Schema(
             }
         ],
         completedSwaps: {
-            type: Number
+            type: Number,
+            default: 0
         },
         messages: [
             {

@@ -15,7 +15,8 @@ const swapSchema = new Schema(
             }
         ],
         proposerCash: {
-            type: Number
+            type: Number,
+            default: 0
         },
         responder: {
             type: Schema.Types.ObjectId,
@@ -29,22 +30,29 @@ const swapSchema = new Schema(
             }
         ],
         responderCash: {
-            type: Number
+            type: Number,
+            default: 0
         },
         swapMessage: {
             type: Schema.Types.ObjectId,
             ref: 'Message'
         },
         isActive: {
-            type: Boolean
+            type: Boolean,
+            default: true
         },
         isCompleted: {
-            type: Boolean
+            type: Boolean,
+            default: false
         },
         createdAt: {
             type: Date,
             default: Date.now,
             get: timestamp => dateFormat(timestamp)
+        },
+        response: {
+            type: String,
+            default: 'unanswered'
         }
     },
     {

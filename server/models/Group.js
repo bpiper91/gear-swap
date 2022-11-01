@@ -18,7 +18,8 @@ const groupSchema = new Schema(
         },
         isPublic: {
             type: Boolean,
-            required: true
+            required: true,
+            default: true
         },
         listings: [
             {

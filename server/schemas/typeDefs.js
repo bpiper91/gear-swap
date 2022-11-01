@@ -46,6 +46,7 @@ const typeDefs = gql`
         swapMessage: Message
         isActive: Boolean
         isCompleted: Boolean
+        response: String
     }
 
     type Message {
@@ -75,9 +76,8 @@ const typeDefs = gql`
         groups: [Group]
         groupsPublic: [Group]
         listing(_id: ID!): Listing
-        groupListings(groupName: String!): [Listing]
-        swap(_id: ID!): Swap
-        message(_id: ID!): Message
+        swap(_id: ID!, groupName: String!): Swap
+        message(_id: ID!, groupName: String!): Message
     }
 
     type Mutation {

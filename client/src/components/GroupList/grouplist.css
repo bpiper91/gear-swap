@@ -13,6 +13,13 @@
     font-size: 30px;
 }
 
+/* controls search input in GroupList and ListingList index files */
+.group-input {
+    transform: translateX(20%);
+    margin-top: 5px;
+    width: 70%;
+}
+
 .grouplist-list {
     margin-top: 20px;
     font-size: 22px;

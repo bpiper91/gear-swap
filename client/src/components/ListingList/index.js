@@ -6,7 +6,8 @@ const ListingList = () => {
     return (
         <main className="list-main">
             <div className="listing-wrapper">
-                <div className="list-title">Your Lists:</div>
+                <div className="list-title">Gear</div>
+                <input type="search" id="gear-input" placeholder="Browse gear" className="group-input" />
                 <ul className="list-list">
                     <li className="list-l"><a href="/">current placeholder</a></li>
                     <li className="list-l"><a href="/">current placeholder</a></li>

@@ -14,14 +14,14 @@ const Login = () => {
                 </div>
                 <div className="rem-for-flex-container">
                     <div className="checkbox-text-flex">
-                        <input type="checkbox" id="rem-button" name="remember" value="remember-me" label for="remember" />
+                        <input label="true" type="checkbox" id="rem-button" name="remember" value="remember-me" />
                         <div className="remember-me-text">Remember me</div>
                     </div>
                     <div className="forgot-pass">
                         <a href="/home">Forgot Password</a>
                     </div>
                 </div>
-                <button type="submit" className="login-submit-btn">Login</button>
+                <input id="login-submit" type="submit" value="Login" className="login-submit-btn" />
                 <div className="register">Not registered yet? <a href="/signup" className="login-signup-link">Create an account</a></div>
                 <div className="login-copyright">@2022 Gear Swap™ All rights reserved</div>
             </div>

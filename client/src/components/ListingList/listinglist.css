@@ -14,7 +14,8 @@
 
 .list-list {
     margin-top: 20px;
-    font-size: 40px;
+    font-size: 22px;
+    padding-left: 20px;
 }
 
 .listing-wrapper {
@@ -27,4 +28,11 @@
 .listing-wrapper:hover {
     overflow: scroll;
     overflow-x: hidden;
+}
+
+.list-l,
+.list-l a {
+    text-decoration: none;
+    color: #152f84;
+    margin-top: 8px;
 }

@@ -8,10 +8,10 @@ const ListingList = () => {
             <div className="listing-wrapper">
                 <div className="list-title">Your Lists:</div>
                 <ul className="list-list">
-                    <li className="list-l">current placeholder</li>
-                    <li className="list-l">current placeholder</li>
-                    <li className="list-l">current placeholder</li>
-                    <li className="list-l">current placeholder</li>
+                    <li className="list-l"><a href="/">current placeholder</a></li>
+                    <li className="list-l"><a href="/">current placeholder</a></li>
+                    <li className="list-l"><a href="/">current placeholder</a></li>
+                    <li className="list-l"><a href="/">current placeholder</a></li>
                 </ul>
             </div>
         </main>

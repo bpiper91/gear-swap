@@ -6,10 +6,10 @@ const GroupList = () => {
         <div className="list-wrapper">
       <div className="group-list-title">Your Group List:</div>
         <ul className="grouplist-list">
-            <li className="list-g">current placeholder</li>
-            <li className="list-g">current placeholder</li>
-            <li className="list-g">current placeholder</li>
-            <li className="list-g">current placeholder</li>
+            <li className="list-g"><a href="/">current placeholder</a></li>
+            <li className="list-g"><a href="/">current placeholder</a></li>
+            <li className="list-g"><a href="/">current placeholder</a></li>
+            <li className="list-g"><a href="/">current placeholder</a></li>
         </ul>
     </div>
     </main>

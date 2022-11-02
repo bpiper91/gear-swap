@@ -15,7 +15,20 @@
 
 .grouplist-list {
     margin-top: 20px;
-    font-size: 40px;
+    font-size: 22px;
+    padding-left: 20px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+.list-g,
+.list-g a {
+    text-decoration: none;
+    color: #152f84;
+    margin-top: 8px;
 }
 
 .list-wrapper {

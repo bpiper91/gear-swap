@@ -1,11 +1,21 @@
 import React from "react";
 
+// this page is using 'grouplist.css' due to same "classnames"
+
 const ListingList = () => {
-  return (
-    <header>
-      <div>Listing List Component</div>
-    </header>
-  );
+    return (
+        <main className="list-main">
+            <div className="listing-wrapper">
+                <div className="list-title">Your Lists:</div>
+                <ul className="list-list">
+                    <li className="list-l">current placeholder</li>
+                    <li className="list-l">current placeholder</li>
+                    <li className="list-l">current placeholder</li>
+                    <li className="list-l">current placeholder</li>
+                </ul>
+            </div>
+        </main>
+    );
 };
 
 export default ListingList;

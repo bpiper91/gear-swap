@@ -1,0 +1,30 @@
+.list-main {
+    height: 40vh;
+    position: absolute;
+    bottom: 5vh;
+    z-index: 1;
+    background-color: #aeaeae;
+    border-top: 1px solid black;
+}
+
+.list-title {
+    text-align: center;
+    font-size: 30px;
+}
+
+.list-list {
+    margin-top: 20px;
+    font-size: 40px;
+}
+
+.listing-wrapper {
+    width: 300px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: 40vh;
+}
+
+.listing-wrapper:hover {
+    overflow: scroll;
+    overflow-x: hidden;
+}

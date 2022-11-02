@@ -1,0 +1,31 @@
+.grouplist-main {
+    height: 40vh;
+    position: absolute;
+    top: 15vh;
+    z-index: 1;
+    background-color: #aeaeae;
+    border-bottom: 1px solid black;
+}
+
+.group-list-title {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+.grouplist-list {
+    margin-top: 20px;
+    font-size: 40px;
+}
+
+.list-wrapper {
+    width: 300px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: 40vh;
+}
+
+.list-wrapper:hover {
+    overflow: scroll;
+    overflow-x: hidden;
+}

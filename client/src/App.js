@@ -13,10 +13,10 @@ import SingleListing from './pages/SingleListing'
 import NoMatch from './pages/NoMatch'
 function App() {
   return (
-    <div>
+    <>
+        <Header />
       <Router>
-        <div>
-          <Header />
+
           <div>
             <Routes>
               <Route
@@ -49,10 +49,9 @@ function App() {
               />
             </Routes>
           </div>
-          <Footer />
-        </div>
       </Router>
-    </div>
+        <Footer />
+    </>
   )
 }
 

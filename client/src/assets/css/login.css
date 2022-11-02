@@ -1,0 +1,64 @@
+.login-main {
+    height: 92vh;
+    background-image: url(../../assets/images/city-background.jpg);
+    background-size: 100% 100%;
+}
+
+.login-sheet-background {
+    height: 60%;
+    width: 40%;
+    border: 1px solid black;
+    border-radius: 10px;
+    position: absolute;
+    transform: translate(75%, 25%);
+    background-color: white;
+    opacity: 50%;
+}
+
+.login-sheet {
+    height: 60%;
+    width: 40%;
+    position: absolute;
+    transform: translate(75%, 25%);
+}
+
+.login-title {
+    text-align: center;
+    padding-top: 20px;
+}
+
+#email-password-wrapper {
+    padding-top: 40px;
+    transform: translateX(10%);
+}
+
+/* class for both Email and Password title texts */
+.login-epass {
+    padding-top: 20px;
+    font-size: larger;
+}
+
+/* class for both Email and Password inputs */
+.login-epass-input {
+    width: 80%;
+    height: 3vh;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.login-submit-btn {
+    height: 4vh;
+    width: 50%;
+    transform: translateX(50%);
+    margin-top: 60px;
+    border-radius: 40px;
+    background-color: rebeccapurple;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.login-copyright {
+    text-align: center;
+    color: dimgray;
+    margin-top: 14vh;
+}

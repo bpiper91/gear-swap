@@ -1,10 +1,14 @@
 import './App.css';
+import { setContext } from '@apollo/client/link/context';
+import { NewListingProvider } from './utils/GlobalState';
 
 function App() {
   return (
-    <div >
-    Hello World!
-    </div>
+    <NewListingProvider>
+      <div >
+        Hello World!
+      </div>
+    </NewListingProvider>
   );
 }
 

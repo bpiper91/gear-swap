@@ -1,7 +1,11 @@
 require('dotenv').config();
 import React, { Component } from "react";
+import { useNewListingContext } from './utils/GlobalState';
+import { UPDATE_NEW_LISTING_IMAGES } from './utils/actions';
 
 class CloudinaryUploadWidget extends Component {
+    // const [state, dispatch] = useNewListingContext();
+
     componentDidMount() {
         const cloudName = process.env.CLOUD_NAME;
         const uploadPreset = process.env.CLOUD_PRESET;
@@ -23,11 +27,18 @@ class CloudinaryUploadWidget extends Component {
             },
             (error, result) => {
                 if (!error && result && result.event === "success") {
-                    console.log("Done! Here is the image info: ", result.info);
-                    document
-                        .getElementById("uploadedimage")
-                        .setAttribute("src", result.info.secure_url); 
-                        // pass this variable to the updateListing mutation
+                    const newImageURL = result.info.secure_url;
+                    if (newLisingImages.length < 3) {
+                        dispatchEvent({
+                            type: UPDATE_NEW_LISTING_IMAGES,
+                            newLisingImages: [...newListingImages, newImageURL]
+                        });
+                    };
+
+                    // document
+                    //     .getElementById("uploadedimage")
+                    //     .setAttribute("src", result.info.secure_url); 
+                    //     // pass this variable to the updateListing mutation
                 }
             }
         );
@@ -43,7 +54,7 @@ class CloudinaryUploadWidget extends Component {
     render() {
         return (
             <button id="upload-widget-btn" className="cloudinary-button">
-                Upload
+                Upload Images
             </button>
         );
     };

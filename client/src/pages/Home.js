@@ -1,15 +1,20 @@
 import React from 'react';
 import GroupList from '../components/GroupList';
 import ListingList from '../components/ListingList';
+
+
+
 const Home = () => {
     return (
-    <> 
+        <>
+            {/*  */}
+            {/* <div className="" id=""></div> */}
         <GroupList />
         <ListingList />
         
         <main className="home-main">
             <div className="background-img">
-                {/*  */}
+
                 <a href="/profile" className="listing-btn-a">
                     <input id="profile-btn" type="submit" value="Your Profile" className="browse-btn"/></a>
                 <div className="profile-btn"></div>

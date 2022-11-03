@@ -7,6 +7,9 @@ const Signup = () => {
             <form className="login-sheet">
                 <h1 className="login-title">Create an Account</h1>
                 <div id="email-password-wrapper">
+                    
+                    {/* NEEED: validate and store user info upon clicking submit button */}
+                    
                     <h4 className="login-epass">* Username</h4>
                     <input name="user-i" className="login-epass-input" placeholder="Username"/>
                     <h4 className="login-epass">* Email</h4>

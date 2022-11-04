@@ -7,11 +7,19 @@ import { useNewListingContext } from './utils/GlobalState';
 import { UPDATE_NEW_LISTING_IMAGES } from './utils/actions';
 
 const NewListing = (groupName) => {
+    // use CREATE_LISTING mutation as createListing
     const [createListing, { data }] = useMutation(CREATE_LISTING);
     
+    // use global state for listing upload image URLs
     const [state, dispatch] = useNewListingContext();
     const { newListingImages } = state;
 
+    // use local state for listing title, description, and value
+    const [listingTitle, setListingTitle] = useState('');
+    const [listingDescription, setListingDescription] = useState('');
+    const [listingValue, setListingValue] = useState('');
+
+    // when an image is clicked, delete it from the newListingImages array in global state
     const deleteUploadedImage = (imageURL) => {
         const updatedListingImages = newListingImages.filter(image => image !== imageURL);
         dispatch({
@@ -20,19 +28,46 @@ const NewListing = (groupName) => {
         });
     };
 
+    // when the form changes, update state
+    const handleFormChange = () => {
+
+    };
+
+    // when the form is submitted, add a new listing to the database
+    const handleFormSubmit = () => {
+
+    };
+
     return (
         <div className='new-listing'>
-
-            <CloudinaryUploadWidget />
-            <div className='upload-images' style="width: 90%; margin-right: auto; margin-left: auto;">
-            {newListingImages && 
-                newListingImages.map(image => (
-                    <figure key={i} className='upload-image-preview' style="width: 30%;">
-                        <img src={image} style="max-height: 200px; object-fit: scale-down;"
-                            onClick={deleteUploadedImage(image)} />
-                    </figure>
-                ))}    
-            </div>
+            <form id='new-listing-form' onSubmit={handleFormSubmit}>
+                <input 
+                    placeholder='Listing title...'
+                    value={listingTitle}
+                    onChange={handleFormChange}
+                ></input>
+                <input
+                    placeholder='Est. value (USD)'
+                    value={listingValue}
+                    onChange={handleFormChange}
+                ></input>
+                <textarea
+                    placeholder='Describe your gear here...'
+                    value={listingDescription}
+                    onChange={handleFormChange}
+                ></textarea>
+                <CloudinaryUploadWidget />
+                <div className='upload-images' style="width: 90%; margin-right: auto; margin-left: auto;">
+                    {newListingImages && 
+                    newListingImages.map(image => (
+                        <figure key={i} className='upload-image-preview' style="width: 30%;">
+                            <img src={image} style="max-height: 200px; object-fit: scale-down;"
+                                onClick={deleteUploadedImage(image)} />
+                        </figure>
+                    ))}    
+                </div>
+                <button type='submit'>Create New Listing</button>
+            </form>
         </div>
     );
 };

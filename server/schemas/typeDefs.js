@@ -7,6 +7,7 @@ const typeDefs = gql`
         lastName: String!
         email: String!
         location: String
+        groups:[Group]
         listings: [Listing]
         activeSwaps: [Swap]
         completedSwaps: Int
@@ -21,7 +22,7 @@ const typeDefs = gql`
         isPublic: Boolean
         listings: [Listing]
         users: [User]
-        owners: [User]
+        owners: User
         admins: [User]
         activeSwaps: [Swap]
         messages: [Message]
@@ -30,7 +31,7 @@ const typeDefs = gql`
     type Listing {
         _id: ID
         title: String!
-        description: String!
+        description: String
         value: Int
         creator: String!
     }
@@ -72,12 +73,12 @@ const typeDefs = gql`
     type Query {
         me: User
         user(_id: ID!): User
-        group(groupName: String!): Group
+        group(_id: ID!): Group
         groups: [Group]
         groupsPublic: [Group]
         listing(_id: ID!): Listing
         swap(_id: ID!, groupName: String!): Swap
-        message(_id: ID!, groupName: String!): Message
+        message(_id: ID!, groupName: String): Message
     }
 
     type Mutation {
@@ -86,17 +87,17 @@ const typeDefs = gql`
         updateUser(_id: ID!): User
         deleteUser(_id: ID!): User
         createGroup(groupName: String!, description: String, location: String, isPublic: Boolean): Group
-        updateGroup(groupName: String!): Group
-        deleteGroup(groupName: String!): Group
-        createListing(title: String!, description: String, value: Int, groupName: String!): Listing
+        updateGroup(_id: ID!, groupName: String, description: String, location: String, isPublic: Boolean): Group
+        deleteGroup(_id: ID!): Group
+        createListing(title: String!, description: String, value: Int, groupId: ID!): Listing
         deleteListing(_id: ID!): Listing
         createSwap(proposerListings: [String], proposerCash: Int, responder: String!, responderListings: [String], responderCash: Int): Swap
         updateSwap(_id: ID!): Swap
         deleteSwap(_id: ID!): Swap
         createMessage(receiver: String!, messageText: String!, relevantListing: String): Message
         deleteMessage(_id: ID!): Message
-        createComment(commentText: String!): Comment
-        deleteComment(_id: ID!): Comment
+        createComment(messageId: ID!, commentText: String!): Comment
+        deleteComment(_id: ID!): Message
     }
 `;
 

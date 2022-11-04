@@ -33,18 +33,19 @@ const groupSchema = new Schema(
                 ref: 'User'
             }
         ],
-        owners: [
+        owners: 
             {
                 type: Schema.Types.ObjectId,
                 ref: 'User'
-            }   
-        ],
-        admins: [
+    
+            },
+        
+        admins:
             {
-                type: Schema.Types.ObjectId,
-                ref: 'User'
-            }
-        ],
+                type: String,
+        
+            },
+        
         activeSwaps: [
             {
                 type: Schema.Types.ObjectId,

@@ -19,7 +19,10 @@ const listingSchema = new Schema(
                 ref: 'User',
                 required: true
         },
-        // image: ??? | need to figure out how to handle image uploads
+        images: {
+            type: [String],
+            default: []
+        }
     }
 );
 

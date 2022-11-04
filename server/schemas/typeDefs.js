@@ -33,6 +33,7 @@ const typeDefs = gql`
         description: String!
         value: Int
         creator: String!
+        images: [String]
     }
 
     type Swap {
@@ -88,7 +89,7 @@ const typeDefs = gql`
         createGroup(groupName: String!, description: String, location: String, isPublic: Boolean): Group
         updateGroup(groupName: String!): Group
         deleteGroup(groupName: String!): Group
-        createListing(title: String!, description: String, value: Int, groupName: String!): Listing
+        createListing(title: String!, description: String, value: Int, images: [String], groupId: String!): Listing
         deleteListing(_id: ID!): Listing
         createSwap(proposerListings: [String], proposerCash: Int, responder: String!, responderListings: [String], responderCash: Int): Swap
         updateSwap(_id: ID!): Swap

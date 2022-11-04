@@ -37,14 +37,17 @@ const groupSchema = new Schema(
             {
                 type: Schema.Types.ObjectId,
                 ref: 'User'
-            }   
+    
+            }
         ],
+        
         admins: [
             {
                 type: Schema.Types.ObjectId,
                 ref: 'User'
             }
         ],
+        
         activeSwaps: [
             {
                 type: Schema.Types.ObjectId,

@@ -10,6 +10,6 @@ function App() {
       </div>
     </NewListingProvider>
   );
-}
+};
 
 export default App;

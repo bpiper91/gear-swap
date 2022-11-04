@@ -8,11 +8,12 @@ const resolvers = {
             if (context.user) {
                 const userData = await User.findOne({ _id: context.user._id })
                     .select('-__v -password')
+                    .populate('groups')
                     .populate('listings')
                     .populate('activeSwaps')
                     .populate('messages');
-
                 return userData;
+               
             }
 
             throw new AuthenticationError('Must be logged in to do that');
@@ -22,9 +23,11 @@ const resolvers = {
                 .select('-__v -password')
                 .populate('listings');
         },
-        group: async (parent, { groupName }) => {
-            return Group.findOne({ groupName })
-                .populate('listings');
+        group: async (parent, {_id }) => {
+            return Group.findOne({_id })
+                .populate('listings')
+                .populate('owners');
+              
         },
         groups: async () => {
             return Group.find()
@@ -39,6 +42,7 @@ const resolvers = {
         },
         listing: async (parent, { _id }) => {
             return Listing.findOne({ _id });
+            
         },
         swap: async (parent, { _id, groupName }, context) => {
             const dbSwap = await Swap.findOne({ _id })
@@ -63,6 +67,7 @@ const resolvers = {
         message: async (parent, { _id, groupName }, context) => {
             const dbMessage = await Message.findOne({ _id })
                 .populate('comments');
+               
             
             if (context.user._id === dbMessage.sender || context.user._id === dbMessage.receiver) {
                 return dbMessage;
@@ -111,64 +116,75 @@ const resolvers = {
 
         },
         createGroup: async (parent, args, context) => {
-            // replace mutation with this after testing
-            // if (context.user) {
-            //     const group = await Group.create({ ...args, owners: [context.user._id], admins: [context.user._id] });
-            //     return group;
-            // };
+            if (context.user) {
+                const group = await Group.create({ ...args, owners: context.user._id });
+                    await User.findByIdAndUpdate(
+                        {_id: context.user._id},
+                        {$push: {groups: group._id}},
+                        {new: true}
+                    );
 
-            // throw new AuthenticationError('Must be logged in to do that');
-
-                const group = await Group.create({ ...args, owners: ['636193b03c809a462e4c4ad6'], admins: ['636193b03c809a462e4c4ad6'] });
                 return group;
-        },
-        updateGroup: async () => {
+                
 
-        },
-        deleteGroup: async () => {
+            };
 
+            throw new AuthenticationError('You need to be logged in!');
+        },
+        updateGroup: async (parent, args, context) => {
+            if (context.user) {
+                const updateGroup = await Group.findOneAndUpdate(
+                    { _id: args._id },
+                    {...args},
+                    {new: true}
+                );
+
+                return updateGroup;
+            };
+
+              throw new AuthenticationError('Action not allowed')
+        },
+        deleteGroup: async (parent, {_id}, context) => {
+
+                if (context.user) {
+                  const deleteGroup = await Group.findOneAndDelete(
+                    { _id: {_id} },
+                    {new: true}
+                  );
+                  return deleteGroup;
+                }
+                throw new AuthenticationError('You need to be logged in!')
         },
         createListing: async (parent, args, context) => {
-            // replace mutation with this after testing
-            // if (context.user) {
-            //     const listing = await Listing.create({ ...args, creator: context.user._id });
-
-            //     await User.findByIdAndUpdate(
-            //         { _id: context.user._id },
-            //         { $push: { listings: listing._id } },
-            //         { new: true }
-            //     );
-
-            //     await Group.findOneAndUpdate(
-            //         { groupName: args.groupName },
-            //         { $push: { listings: listing._id } },
-            //         { new: true }
-            //     );
-
-            //     return listing;
-            // };
-
-            // throw new AuthenticationError('Must be logged in to do that');
-
-
-                const listing = await Listing.create({ ...args, creator: '636193b03c809a462e4c4ad6' });
+            if (context.user) {
+                const listing = await Listing.create({ ...args, creator: context.user._id });
 
                 await User.findByIdAndUpdate(
-                    { _id: '636193b03c809a462e4c4ad6' },
+                    { _id: context.user._id },
                     { $push: { listings: listing._id } },
                     { new: true }
                 );
 
                 await Group.findOneAndUpdate(
-                    { groupName: args.groupName },
+                    { _id: args.groupId },
                     { $push: { listings: listing._id } },
                     { new: true }
                 );
 
                 return listing;
-        },
-        deleteListing: async () => {
+            };
 
+            throw new AuthenticationError('Must be logged in to do that');
+        },
+        deleteListing: async (parent, {_id}, context) => {
+            if (context.user) {
+                const deleteListing = await Listing.findOneAndDelete(
+                  { _id: {_id} },
+                  {new: true}
+                );
+                return deleteListing;
+              }
+              throw new AuthenticationError('You need to be logged in!')
         },
         createSwap: async () => {
 
@@ -179,18 +195,61 @@ const resolvers = {
         deleteSwap: async () => {
 
         },
-        createMessage: async () => {
+        createMessage: async (parent, args, context) => {
+            console.log(context.user._id);
+            
+            if (context.user) {
+                const message = await Message.create({...args, sender: context.user._id });
+               
+                const updateMessagetoReciever = await User.findByIdAndUpdate(
+                    {_id: args.receiver},
+                    {$push: {messages: message._id  }},
+                    {new: true}
+                );
+                const updateMessagetoSender = await User.findByIdAndUpdate(
+                    {_id: context.user._id},
+                    {$push: {messages: message._id  }},
+                    {new: true}
+                );
+
+                return {message, updateMessagetoReciever, updateMessagetoSender};
+            }
+            throw new AuthenticationError('You need to be logged in!');
 
         },
-        deleteMessage: async () => {
+        deleteMessage: async (parent, {_id}, context) => {
+            if (context.user) {
+                const deleteMessage = await Message.findOneAndDelete(
+                  { _id: {_id} },
+                  {new: true}
+                );
+                return deleteMessage;
+              }
+              throw new AuthenticationError('You need to be logged in!')
 
         },
-        createComment: async () => {
+        createComment: async (parent, args, context) => {
+            console.log(context.user);
+            if (context.user) {
+                const comment = await Comment.create({...args, commenter: context.user._id});
+                console.log(comment);
+                const updateMessage = await Message.findOneAndUpdate(
+                    {_id: args.messageId},
+                    {$push: {comments: comment._id}},
+                    {new: true}
+
+                );
+                console.log(comment._id)
+                return {comment, updateMessage};
+            }
+            throw new AuthenticationError('You need to be logged in!');
 
         },
         deleteComment: async () => {
 
         }
+        
+
     }
 };
 

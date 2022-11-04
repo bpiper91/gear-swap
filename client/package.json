@@ -8,9 +8,15 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "graphql": "^16.6.0",
+<<<<<<< HEAD
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "^6.2.1",
+=======
+    "jwt-decode": "^3.1.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+>>>>>>> f948ec1fb0134fa4f97fa5f1d19da0e6ec7e6e19
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },

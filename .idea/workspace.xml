@@ -5,7 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c19727d6-4438-483e-916b-1a68b6e9b7ee" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/CloudinaryUploadWidget.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/__tests__/reducers.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/NewListing.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/utils/GlobalState.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/utils/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/utils/auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/utils/reducers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/mutations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/Group.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Group.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +77,7 @@
       <updated>1667349411027</updated>
       <workItem from="1667349412285" duration="150000" />
       <workItem from="1667349831045" duration="35251000" />
-      <workItem from="1667516167771" duration="1747000" />
+      <workItem from="1667516167771" duration="2441000" />
     </task>
     <servers />
   </component>

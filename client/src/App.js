@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+=======
+import './App.css';
+import { setContext } from '@apollo/client/link/context';
+import { NewListingProvider } from './utils/GlobalState';
+>>>>>>> f948ec1fb0134fa4f97fa5f1d19da0e6ec7e6e19
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -13,6 +19,7 @@ import SingleListing from './pages/SingleListing'
 import NoMatch from './pages/NoMatch'
 function App() {
   return (
+<<<<<<< HEAD
     <>
         <Header />
       <Router>
@@ -53,6 +60,14 @@ function App() {
         <Footer />
     </>
   )
+=======
+    <NewListingProvider>
+      <div >
+        Hello World!
+      </div>
+    </NewListingProvider>
+  );
+>>>>>>> f948ec1fb0134fa4f97fa5f1d19da0e6ec7e6e19
 }
 
 export default App;

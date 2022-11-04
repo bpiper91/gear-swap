@@ -38,8 +38,8 @@ export const CREATE_GROUP = gql`
 `;
 
 export const CREATE_LISTING = gql`
-    mutation CreateListing($title: String!, $groupName: String!, $description: String, $value: Int) {
-        createListing(title: $title, groupName: $groupName, description: $description, value: $value) {
+    mutation CreateListing($title: String!, $groupId: String!, $description: String, $value: Int) {
+        createListing(title: $title, groupId: $groupId, description: $description, value: $value) {
         title
         description
         value

@@ -3,17 +3,25 @@ import GroupList from '../components/GroupList';
 import ListingList from '../components/ListingList';
 import { useQuery } from "@apollo/client";
 import { QUERY_GROUPS } from "../utils/queries";
+import Auth from "../utils/auth";
 
 
 const Home = () => {
   // use useQuery hook to make query request
-  const { loading, data } = useQuery(QUERY_GROUPS);
+  const { data } = useQuery(QUERY_GROUPS);
+  console.log(data);
+  const groups = data?.groups || []
+  console.log(groups)
+  const loggedIn = Auth.loggedIn();
   return (
     <>
       <main>
-      <GroupList />
-      <ListingList />
+        <GroupList
+          groups={groups}
+        />
+        <ListingList/>
         <div className="homepage">
+          {loggedIn && (
           <a href="/profile" className="listing-btn-a">
             <input
               id="profile-btn"
@@ -22,6 +30,7 @@ const Home = () => {
               className="browse-btn"
             />
           </a>
+          )}
           <div className="profile-btn"></div>
           <div className="login-sheet-background"></div>
           <div className="login-sheet">

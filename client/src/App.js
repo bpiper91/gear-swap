@@ -11,12 +11,14 @@ import Profile from './pages/Profile';
 import SingleGroup from './pages/SingleGroup';
 import SingleListing from './pages/SingleListing'
 import NoMatch from './pages/NoMatch'
+
+
+
 function App() {
   return (
     <>
-        <Header />
       <Router>
-
+        <Header />
           <div>
             <Routes>
               <Route
@@ -49,8 +51,8 @@ function App() {
               />
             </Routes>
           </div>
-      </Router>
         <Footer />
+      </Router>
     </>
   )
 }

@@ -14,6 +14,11 @@ const listingSchema = new Schema(
         value: {
             type: Number
         },
+        group: {
+            type: Schema.Types.ObjectId,
+            ref: 'Group',
+            required: true
+        },
         creator: {
                 type: Schema.Types.ObjectId,
                 ref: 'User',

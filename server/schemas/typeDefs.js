@@ -99,7 +99,7 @@ const typeDefs = gql`
         createMessage(receiver: String!, messageText: String!, relevantListing: String): Message
         deleteMessage(_id: ID!): Message
         createComment(messageId: ID!, commentText: String!): Message
-        deleteComment(_id: ID!): Message
+        deleteComment(commentId: ID!, messageId: ID!): Message
     }
 `;
 

@@ -112,8 +112,86 @@ const resolvers = {
         updateUser: async () => {
 
         },
-        deleteUser: async () => {
+        deleteUser: async (parent, { _id }, context) => {
+            // if (context.user) {
+                const deleteUser = await User.findOneAndDelete(
+                    { _id: _id }
+                );
 
+                // remove from any Groups
+                if (deleteUser.groups.length > 0) {
+                    for (i = 0; i < deleteUser.groups.length; i++) {
+                        await Group.findOneAndUpdate(
+                            { _id: deleteUser.groups[i]._id },
+                            { $pull: { users: _id } }
+                        );
+                    };
+                };
+
+                // delete associated Listings
+                if (deleteUser.listings.length > 0) {
+                    for (i = 0; i < deleteUser.listings.length; i++) {
+                        // delete the user's listings
+                        const deleteListing = await Listing.findOneAndDelete(
+                            { _id: deleteUser.listings[i]._id }
+                        );
+                    
+                        // delete the listings from their associated group
+                        await Group.findOneAndUpdate(
+                            { _id: deleteListing.group._id },
+                            { $pull: { listings: deleteListing._id } }
+                        );
+                    };
+                };
+                
+                // delete associated messages
+                if (deleteUser.messages.length > 0) {
+                    for (i = 0; i < deleteUser.messages.length; i++) {
+                        // delete the user's messages
+                        const deleteMessage = await Message.findOneAndDelete(
+                            { _id: deleteUser.messages[i]._id }
+                        );
+
+                        // delete message from the other user's array
+                        if (deleteMessage.sender === _id) {
+                            await User.findOneAndUpdate(
+                                { _id: deleteMessage.receiver },
+                                { $pull: { messages: deleteMessage._id } }
+                            );
+                        } else {
+                            await User.findOneAndUpdate(
+                                { _id: deleteMessage.sender },
+                                { $pull: { messages: deleteMessage._id } }
+                            );
+                        };
+                    };
+                };
+
+                // delete associated swaps
+                if (deleteUser.swaps.length > 0) {
+                    for (i = 0; i < deleteUser.swaps.length; i++) {
+                        // delete the user's swaps
+                        const deleteSwap = await Swap.findOneAndDelete(
+                            { _id: deleteUser.activeSwaps[i] }
+                        );
+
+                        // delete swap from the other user's array
+                        if (deleteSwap.proposer === _id) {
+                            await User.findOneAndUpdate(
+                                { _id: deleteSwap.responder },
+                                { $pull: { activeSwaps: deleteSwap._id } }
+                            );
+                        } else {
+                            await User.findOneAndUpdate(
+                                { _id: deleteSwap.proposer },
+                                { $pull: { activeSwaps: deleteSwap._id } }
+                            );
+                        };
+                    };
+                };
+            // };
+
+            // throw new AuthenticationError('You need to be logged in!');
         },
         createGroup: async (parent, args, context) => {
             // if (context.user) {
@@ -221,11 +299,50 @@ const resolvers = {
         deleteGroup: async (parent, {_id}, context) => {
 
                 // if (context.user) {
-                  const deleteGroup = await Group.findOneAndDelete(
-                    { _id: {_id} },
-                    {new: true}
-                  );
-                  return deleteGroup;
+                    const deleteGroup = await Group.findOneAndDelete(
+                        { _id: _id },
+                        { new: true }
+                    );
+
+                    // delete group's listings
+                    if (deleteGroup.listings.length > 0) {
+                        for (i = 0; i < deleteGroup.listings.length; i++) {
+                            // delete the listing
+                            const deleteListing = await Listing.findOneAndDelete(
+                                { _id: deleteGroup.listings[i]._id }
+                            );
+
+                            // delete the listing ID from the user's array
+                            await User.findOneAndUpdate(
+                                { _id: deleteListing.creator },
+                                { $pull: { listings: deleteListing._id } }
+                            );
+                        };
+                    };
+
+                    // delete group's swaps
+                    if (deleteGroup.activeSwaps.length > 0) {
+                        for (i = 0; i < deleteGroup.activeSwaps.length; i++) {
+                            // delete the swap
+
+
+                            // delete the swap from both users' arrays
+                            
+                        };
+                    };
+
+                    // delete group's messages
+                    if (deleteGroup.messages.length > 0) {
+                        for (i = 0; i < deleteGroup.messages.length; i++) {
+                            // delete the message
+
+
+                            // delete the message ID from both users' arrays
+
+                        };
+                    };
+
+                    return deleteGroup;
                 // };
 
                 // throw new AuthenticationError('You need to be logged in!');
@@ -274,7 +391,7 @@ const resolvers = {
 
         },
         createMessage: async (parent, args, context) => {
-            const newMessageData = { receiver: args.receiver, messageText: args.messageText };
+            let newMessageData = { receiver: args.receiver, messageText: args.messageText };
 
             if (args.relevantListing) {
                 newMessageData = {...newMessageData, relevantListing: args.relevantListing };
@@ -286,12 +403,14 @@ const resolvers = {
 
                 const message = await Message.create(newMessageData);
                
+                // add message to receiver's array
                 await User.findByIdAndUpdate(
                     { _id: args.receiver },
                     { $push: { messages: message._id } },
                     { new: true }
                 );
 
+                // add message to sender's array
                 await User.findByIdAndUpdate(
                     // { _id: context.user._id },
                     { _id: "6365afef10f1dc4557021a8e" },
@@ -305,14 +424,29 @@ const resolvers = {
             // throw new AuthenticationError('You need to be logged in!');
         },
         deleteMessage: async (parent, {_id}, context) => {
-            if (context.user) {
+            // if (context.user) {
                 const deleteMessage = await Message.findOneAndDelete(
-                  { _id: {_id} },
-                  {new: true}
+                  { _id: _id }
                 );
+
+                // remove deleted message from sender's array
+                await User.findOneAndUpdate(
+                    { _id: deleteMessage.sender },
+                    { $pull: { messages: deleteMessage._id } },
+                    { new: true }
+                );
+
+                // remove deleted message from receiver's array
+                await User.findOneAndUpdate(
+                    { _id: deleteMessage.receiver },
+                    { $pull: { messages: deleteMessage._id } },
+                    { new: true }
+                );
+
                 return deleteMessage;
-              }
-              throw new AuthenticationError('You need to be logged in!')
+            // };
+            
+            // throw new AuthenticationError('You need to be logged in!')
 
         },
         createComment: async (parent, args, context) => {
@@ -332,8 +466,22 @@ const resolvers = {
             
             // throw new AuthenticationError('You need to be logged in!');
         },
-        deleteComment: async () => {
+        deleteComment: async (parent, { commentId, messageId }, context) => {
+            // if (context.user) {
+                const updatedMessage = await Message.findOneAndUpdate(
+                    { _id: messageId },
+                    { $pull: { comments: commentId } },
+                    { new: true }
+                );
+            
+                await Comment.findOneAndDelete(
+                    { _id: commentId }
+                );
 
+                return updatedMessage
+            // };
+
+            // throw new AuthenticationError('You need to be logged in!');
         }
     }
 };

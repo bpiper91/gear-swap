@@ -83,12 +83,13 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        createUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+        createUser(firstName: String!, lastName: String!, email: String!, password: String!, groups: [String]): Auth
         logIn(email: String!, password: String!): Auth
         updateUser(_id: ID!): User
         deleteUser(_id: ID!): User
         createGroup(groupName: String!, description: String, location: String, isPublic: Boolean): Group
-        updateGroup(_id: ID!, groupName: String, description: String, location: String, isPublic: Boolean): Group
+        updateGroup(_id: ID!, groupName: String, description: String, location: String, isPublic: Boolean, listings: [String], users: [String], owners: [String], admins: [String], activeSwaps: [String], messages: [String]): Group
+        addToGroup(_id: ID!, listings: [String], users: [String], owners: [String], admins: [String], activeSwaps: [String], messages: [String]): Group
         deleteGroup(_id: ID!): Group
         createListing(title: String!, description: String, value: Int, images: [String], groupId: ID!): Listing
         deleteListing(_id: ID!): Listing
@@ -97,7 +98,7 @@ const typeDefs = gql`
         deleteSwap(_id: ID!): Swap
         createMessage(receiver: String!, messageText: String!, relevantListing: String): Message
         deleteMessage(_id: ID!): Message
-        createComment(messageId: ID!, commentText: String!): Comment
+        createComment(messageId: ID!, commentText: String!): Message
         deleteComment(_id: ID!): Message
     }
 `;

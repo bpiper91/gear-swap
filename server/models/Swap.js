@@ -53,6 +53,11 @@ const swapSchema = new Schema(
         response: {
             type: String,
             default: 'unanswered'
+        },
+        group: {
+            type: Schema.Types.ObjectId,
+            ref: 'Group',
+            required: true
         }
     },
     {

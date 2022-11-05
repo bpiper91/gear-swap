@@ -324,10 +324,20 @@ const resolvers = {
                     if (deleteGroup.activeSwaps.length > 0) {
                         for (i = 0; i < deleteGroup.activeSwaps.length; i++) {
                             // delete the swap
-
+                            const deleteSwap = await Swap.findOneAndDelete(
+                                { _id: deleteGroup.activeSwaps[i]._id }
+                            );
 
                             // delete the swap from both users' arrays
-                            
+                            await User.findOneAndUpdate(
+                                { _id: deleteSwap.proposer },
+                                { $pull: { activeSwaps: deleteSwap._id } }
+                            );
+
+                            await User.findOneAndUpdate(
+                                { _id: deleteSwap.responder },
+                                { $pull: { activeSwaps: deleteSwap._id } }
+                            );
                         };
                     };
 
@@ -335,10 +345,20 @@ const resolvers = {
                     if (deleteGroup.messages.length > 0) {
                         for (i = 0; i < deleteGroup.messages.length; i++) {
                             // delete the message
-
+                            const deleteMessage = await Message.findOneAndDelete(
+                                { _id: deleteGroup.messages[i]._id }
+                            );
 
                             // delete the message ID from both users' arrays
+                            await User.findOneAndUpdate(
+                                { _id: deleteMessage.sender },
+                                { $pull: { messages: deleteMessage._id } }
+                            );
 
+                            await User.findOneAndUpdate(
+                                { _id: deleteMessage.receiver },
+                                { $pull: { messages: deleteMessage._id } }
+                            );
                         };
                     };
 
@@ -381,8 +401,35 @@ const resolvers = {
             
             // throw new AuthenticationError('You need to be logged in!')
         },
-        createSwap: async () => {
+        createSwap: async (parent, args, context) => {
+            // if (context.user) {
+                // args = {...args, proposer: context.user._id };
+                args = {...args, proposer: "636193b03c809a462e4c4ad6"};
 
+                const newSwap = await Swap.create(args);
+
+                // add swap to both users' arrays
+                await User.findOneAndUpdate(
+                    // { _id: args.proposer },
+                    { _id: "636193b03c809a462e4c4ad6" },
+                    { $push: { activeSwaps: newSwap._id } }
+                );
+
+                await User.findOneAndUpdate(
+                    { _id: args.responder },
+                    { $push: { activeSwaps: newSwap._id } }
+                );
+
+                // add swap to group array
+                await Group.findOneAndUpdate(
+                    { _id: args.groupId },
+                    { $push: { activeSwaps: newSwap._id } }
+                );
+            
+                return newSwap;
+            // };
+
+            // throw new AuthenticationError('You need to be logged in!');
         },
         updateSwap: async () => {
 

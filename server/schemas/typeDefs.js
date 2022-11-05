@@ -49,6 +49,7 @@ const typeDefs = gql`
         isActive: Boolean
         isCompleted: Boolean
         response: String
+        group: Group
     }
 
     type Message {
@@ -93,7 +94,7 @@ const typeDefs = gql`
         deleteGroup(_id: ID!): Group
         createListing(title: String!, description: String, value: Int, images: [String], groupId: ID!): Listing
         deleteListing(_id: ID!): Listing
-        createSwap(proposerListings: [String], proposerCash: Int, responder: String!, responderListings: [String], responderCash: Int): Swap
+        createSwap(proposerListings: [String], proposerCash: Int, responder: String!, responderListings: [String], responderCash: Int, groupId: ID!): Swap
         updateSwap(_id: ID!): Swap
         deleteSwap(_id: ID!): Swap
         createMessage(receiver: String!, messageText: String!, relevantListing: String): Message

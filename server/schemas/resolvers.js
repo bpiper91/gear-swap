@@ -21,7 +21,8 @@ const resolvers = {
         user: async (parent, { _id }) => {
             return User.findOne({ _id })
                 .select('-__v -password')
-                .populate('listings');
+                .populate('listings')
+                .populate('groups')
         },
         group: async (parent, {_id }) => {
             return Group.findOne({_id })
@@ -194,7 +195,7 @@ const resolvers = {
             // throw new AuthenticationError('You need to be logged in!');
         },
         createGroup: async (parent, args, context) => {
-            // if (context.user) {
+            if (context.user) {
                 const group = await Group.create({ ...args, owners: context.user._id });
                     await User.findByIdAndUpdate(
                         { _id: context.user._id },
@@ -203,13 +204,13 @@ const resolvers = {
                     );
 
                 return group;
-            // };
+            };
 
-            // throw new AuthenticationError('You need to be logged in!');
+            throw new AuthenticationError('You need to be logged in!');
         },
         // use this mutation to replace data on a group property
         updateGroup: async (parent, args, context) => {
-            // if (context.user) {
+            if (context.user) {
                 const updatedGroup = await Group.findOneAndUpdate(
                     {_id: args._id},
                     {...args},
@@ -217,13 +218,13 @@ const resolvers = {
                 );
 
                 return updatedGroup;
-            // };
+            };
 
-            // throw new AuthenticationError('Action not allowed')
+            throw new AuthenticationError('Action not allowed')
         },
         // use this mutation to add to an array on a group property
         addToGroup: async (parent, args, context) => {
-            // if (context.user) {
+            if (context.user) {
                 const groupToUpdate = await Group.findOne({ _id: args._id });
 
                 if (args.listings) {
@@ -292,9 +293,9 @@ const resolvers = {
 
                     return updatedGroup;
                 };
-            // };
+            };
 
-            // throw new AuthenticationError('You need to be logged in!');
+            throw new AuthenticationError('You need to be logged in!');
         },
         deleteGroup: async (parent, {_id}, context) => {
 

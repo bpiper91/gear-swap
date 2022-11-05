@@ -86,7 +86,8 @@ const typeDefs = gql`
     type Mutation {
         createUser(firstName: String!, lastName: String!, email: String!, password: String!, groups: [String]): Auth
         logIn(email: String!, password: String!): Auth
-        updateUser(_id: ID!): User
+        updateUser(_id: ID!, firstName: String, lastName: String, email: String, password: String, location: String, completedSwaps: Int): User
+        updateUserGroups(_id: ID!, groups: String, removeGroups: String): User
         deleteUser(_id: ID!): User
         createGroup(groupName: String!, description: String, location: String, isPublic: Boolean): Group
         updateGroup(_id: ID!, groupName: String, description: String, location: String, isPublic: Boolean, listings: [String], users: [String], owners: [String], admins: [String], activeSwaps: [String], messages: [String]): Group
@@ -95,7 +96,7 @@ const typeDefs = gql`
         createListing(title: String!, description: String, value: Int, images: [String], groupId: ID!): Listing
         deleteListing(_id: ID!): Listing
         createSwap(proposerListings: [String], proposerCash: Int, responder: String!, responderListings: [String], responderCash: Int, groupId: ID!): Swap
-        updateSwap(_id: ID!): Swap
+        updateSwap(_id: ID!, isActive: Boolean, isCompleted: Boolean, response: String): Swap
         deleteSwap(_id: ID!): Swap
         createMessage(receiver: String!, messageText: String!, relevantListing: String): Message
         deleteMessage(_id: ID!): Message

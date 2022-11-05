@@ -110,11 +110,59 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        updateUser: async () => {
+        updateUser: async (parent, args, context) => {
+            if (context.user) {
+                let updateArgs = args;
+                delete updateArgs._id;
 
+                const updateUser = await User.findOneAndUpdate(
+                    { _id: args._id },
+                    { updateArgs },
+                    { new: true }
+                );
+
+                return updateUser;
+            };
+
+            throw new AuthenticationError('You need to be logged in!');
+        },
+        updateUserGroups: async (parent, args, context) => {
+            if (context.user) {
+                if (args.groups) {
+                    const updateUser = await User.findOneAndUpdate(
+                        { _id: args._id },
+                        { $addToSet: { groups: args.groups } },
+                        { new: true }
+                    );
+
+                    await Group.findOneAndUpdate(
+                        { _id: args.groups },
+                        { $addToSet: { users: args._id } }
+                    );
+
+                    return updateUser;
+                };
+
+                if (args.removeGroups) {
+                    const updateUser = await User.findOneAndUpdate(
+                        { _id: args._id },
+                        { $pull: { groups: args.removeGroups } },
+                        { new: true }
+                    );
+
+                    await Group.findOneAndUpdate(
+                        { _id: args.removeGroups },
+                        { $pull: { users: updateUser._id } }
+                    );
+
+                    return updateUser;
+                };
+            };
+
+            throw new AuthenticationError('You need to be logged in!');
         },
         deleteUser: async (parent, { _id }, context) => {
-            // if (context.user) {
+            if (context.user) {
                 const deleteUser = await User.findOneAndDelete(
                     { _id: _id }
                 );
@@ -190,9 +238,9 @@ const resolvers = {
                         };
                     };
                 };
-            // };
+            };
 
-            // throw new AuthenticationError('You need to be logged in!');
+            throw new AuthenticationError('You need to be logged in!');
         },
         createGroup: async (parent, args, context) => {
             if (context.user) {
@@ -211,16 +259,19 @@ const resolvers = {
         // use this mutation to replace data on a group property
         updateGroup: async (parent, args, context) => {
             if (context.user) {
-                const updatedGroup = await Group.findOneAndUpdate(
-                    {_id: args._id},
-                    {...args},
-                    {new: true}
+                let updateArgs = args;
+                delete updateArgs._id;
+
+                const updateGroup = await Group.findOneAndUpdate(
+                    { _id: args._id },
+                    { updateArgs },
+                    { new: true }
                 );
 
-                return updatedGroup;
+                return updateGroup;
             };
 
-            throw new AuthenticationError('Action not allowed')
+            throw new AuthenticationError('You need to be logged in!');
         },
         // use this mutation to add to an array on a group property
         addToGroup: async (parent, args, context) => {
@@ -232,7 +283,7 @@ const resolvers = {
 
                     const updatedGroup = await Group.findOneAndUpdate(
                         { _id: args._id },
-                        { $push: { listings: newListings } },
+                        { $addToSet: { listings: newListings } },
                         { new: true }
                     );
 
@@ -243,7 +294,7 @@ const resolvers = {
 
                     const updatedGroup = await Group.findOneAndUpdate(
                         { _id: args._id },
-                        { $push: { users: newUsers } },
+                        { $addToSet: { users: newUsers } },
                         { new: true }
                     );
 
@@ -254,7 +305,7 @@ const resolvers = {
 
                     const updatedGroup = await Group.findOneAndUpdate(
                         { _id: args._id },
-                        { $push: { owners: newOwners } },
+                        { $addToSet: { owners: newOwners } },
                         { new: true }
                     );
                     
@@ -265,7 +316,7 @@ const resolvers = {
 
                     const updatedGroup = await Group.findOneAndUpdate(
                         { _id: args._id },
-                        { $push: { admins: newAdmins } },
+                        { $addToSet: { admins: newAdmins } },
                         { new: true }
                     );
 
@@ -276,7 +327,7 @@ const resolvers = {
 
                     const updatedGroup = await Group.findOneAndUpdate(
                         { _id: args._id },
-                        { $push: { activeSwaps: newSwaps } },
+                        { $addToSet: { activeSwaps: newSwaps } },
                         { new: true }
                     );
 
@@ -287,7 +338,7 @@ const resolvers = {
 
                     const updatedGroup = await Group.findOneAndUpdate(
                         { _id: args._id },
-                        { $push: { messages: newMessages } },
+                        { $addToSet: { messages: newMessages } },
                         { new: true }
                     );
 
@@ -298,8 +349,7 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
         deleteGroup: async (parent, {_id}, context) => {
-
-                // if (context.user) {
+                if (context.user) {
                     const deleteGroup = await Group.findOneAndDelete(
                         { _id: _id },
                         { new: true }
@@ -364,18 +414,18 @@ const resolvers = {
                     };
 
                     return deleteGroup;
-                // };
+                };
 
-                // throw new AuthenticationError('You need to be logged in!');
+                throw new AuthenticationError('You need to be logged in!');
         },
         createListing: async (parent, args, context) => {
-            // if (context.user) {
-                // const listing = await Listing.create({ ...args, creator: context.user._id });
-                const listing = await Listing.create({ ...args, creator: "636198d2be7f9674d305b7e9" });
+            if (context.user) {
+                const listing = await Listing.create({ ...args, creator: context.user._id });
+                // const listing = await Listing.create({ ...args, creator: "636198d2be7f9674d305b7e9" }); // for testing
 
                 await User.findByIdAndUpdate(
-                    // { _id: context.user._id },
-                    { _id: "636198d2be7f9674d305b7e9"},
+                    { _id: context.user._id },
+                    // { _id: "636198d2be7f9674d305b7e9"}, // for testing
                     { $push: { listings: listing._id } },
                     { new: true }
                 );
@@ -387,32 +437,32 @@ const resolvers = {
                 );
 
                 return listing;
-            // };
+            };
 
-            // throw new AuthenticationError('Must be logged in to do that');
+            throw new AuthenticationError('Must be logged in to do that');
         },
         deleteListing: async (parent, {_id}, context) => {
-            // if (context.user) {
+            if (context.user) {
                 const deleteListing = await Listing.findOneAndDelete(
                   { _id: {_id} },
                   {new: true}
                 );
                 return deleteListing;
-            // };
+            };
             
-            // throw new AuthenticationError('You need to be logged in!')
+            throw new AuthenticationError('You need to be logged in!')
         },
         createSwap: async (parent, args, context) => {
-            // if (context.user) {
-                // args = {...args, proposer: context.user._id };
-                args = {...args, proposer: "636193b03c809a462e4c4ad6"};
+            if (context.user) {
+                args = {...args, proposer: context.user._id };
+                // args = {...args, proposer: "636193b03c809a462e4c4ad6"}; // for testing
 
                 const newSwap = await Swap.create(args);
 
                 // add swap to both users' arrays
                 await User.findOneAndUpdate(
-                    // { _id: args.proposer },
-                    { _id: "636193b03c809a462e4c4ad6" },
+                    { _id: args.proposer },
+                    // { _id: "636193b03c809a462e4c4ad6" }, // for testing
                     { $push: { activeSwaps: newSwap._id } }
                 );
 
@@ -428,15 +478,66 @@ const resolvers = {
                 );
             
                 return newSwap;
-            // };
+            };
 
-            // throw new AuthenticationError('You need to be logged in!');
+            throw new AuthenticationError('You need to be logged in!');
         },
-        updateSwap: async () => {
+        updateSwap: async (parent, args, context) => {
+            if (context.user) {
+                let propsToUpdate = {};
 
+                if(args.response) {
+                    propsToUpdate = {
+                        response: args.response
+                    };
+                } else if (args.isActive) {
+                    propsToUpdate = {
+                        isActive: args.isActive
+                    };
+                } else if (args.isCompleted) {
+                    propsToUpdate = {
+                        isCompleted: args.isCompleted
+                    };
+                };  
+
+                const updateSwap = await Swap.findOneAndUpdate(
+                    { _id: args._id },
+                    { propsToUpdate },
+                    { new: true }
+                );
+
+                return updateSwap;
+            };
+
+            throw new AuthenticationError('You need to be logged in!');
         },
-        deleteSwap: async () => {
+        deleteSwap: async (parent, { _id }, context) => {
+            if (context.user) {
+                const deleteSwap = await Swap.findOneAndDelete(
+                    { _id: _id }
+                );
 
+                // delete from group
+                await Group.findOneAndUpdate(
+                    { _id: deleteSwap.group },
+                    { $pull: { activeSwaps: _id } }
+                )
+
+                // delete from associated users
+                await User.findOneAndUpdate(
+                    { _id: deleteSwap.proposer },
+                    { $pull: { activeSwaps: _id } }
+                );
+
+                await User.findOneAndUpdate(
+                    { _id: deleteSwap.responder },
+                    { $pull: { activeSwaps: _id } }
+                );
+
+                return deleteSwap;
+            };
+
+            throw new AuthenticationError('You need to be logged in !');
         },
         createMessage: async (parent, args, context) => {
             let newMessageData = { receiver: args.receiver, messageText: args.messageText };
@@ -445,9 +546,9 @@ const resolvers = {
                 newMessageData = {...newMessageData, relevantListing: args.relevantListing };
             };
 
-            // if (context.user) {
-                // newMessageData = {...newMessageData, sender: context.user._id };
-                newMessageData = {...newMessageData, sender: "6365afef10f1dc4557021a8e" };
+            if (context.user) {
+                newMessageData = {...newMessageData, sender: context.user._id };
+                // newMessageData = {...newMessageData, sender: "6365afef10f1dc4557021a8e" }; // for testing
 
                 const message = await Message.create(newMessageData);
                
@@ -460,19 +561,19 @@ const resolvers = {
 
                 // add message to sender's array
                 await User.findByIdAndUpdate(
-                    // { _id: context.user._id },
-                    { _id: "6365afef10f1dc4557021a8e" },
+                    { _id: context.user._id },
+                    // { _id: "6365afef10f1dc4557021a8e" }, // for testing
                     { $push: { messages: message._id } },
                     { new: true }
                 );
 
                 return message;
-            // };
+            };
 
-            // throw new AuthenticationError('You need to be logged in!');
+            throw new AuthenticationError('You need to be logged in!');
         },
         deleteMessage: async (parent, {_id}, context) => {
-            // if (context.user) {
+            if (context.user) {
                 const deleteMessage = await Message.findOneAndDelete(
                   { _id: _id }
                 );
@@ -492,15 +593,15 @@ const resolvers = {
                 );
 
                 return deleteMessage;
-            // };
+            };
             
-            // throw new AuthenticationError('You need to be logged in!')
+            throw new AuthenticationError('You need to be logged in!')
 
         },
         createComment: async (parent, args, context) => {
-            // if (context.user) {
-                // const comment = await Comment.create({...args, commenter: context.user._id});
-                const comment = await Comment.create({...args, commenter: "636193b03c809a462e4c4ad6" });
+            if (context.user) {
+                const comment = await Comment.create({...args, commenter: context.user._id});
+                // const comment = await Comment.create({...args, commenter: "636193b03c809a462e4c4ad6" }); // for testing
                
                 const updatedMessage = await Message.findOneAndUpdate(
                     { _id: args.messageId },
@@ -510,12 +611,12 @@ const resolvers = {
                 ).populate('comments');
                
                 return updatedMessage;
-            // }
+            };
             
-            // throw new AuthenticationError('You need to be logged in!');
+            throw new AuthenticationError('You need to be logged in!');
         },
         deleteComment: async (parent, { commentId, messageId }, context) => {
-            // if (context.user) {
+            if (context.user) {
                 const updatedMessage = await Message.findOneAndUpdate(
                     { _id: messageId },
                     { $pull: { comments: commentId } },
@@ -527,9 +628,9 @@ const resolvers = {
                 );
 
                 return updatedMessage
-            // };
+            };
 
-            // throw new AuthenticationError('You need to be logged in!');
+            throw new AuthenticationError('You need to be logged in!');
         }
     }
 };

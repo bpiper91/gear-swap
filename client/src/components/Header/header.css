@@ -1,0 +1,37 @@
+.header-main {
+    width: 100%;
+    height: 8vh;
+    background-color: dimgray;
+}
+
+.header-name a {
+    text-decoration: none;
+    color: black;
+}
+
+.header-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header-name {
+    font-size: 4vw;
+    font-weight: 600;
+}
+
+.login-signup-wrapper {
+    display: flex;
+    flex-direction: row;
+    font-size: 33px;
+}
+
+.login-link {
+    margin-right: 10px;
+}
+
+.login-link a,
+.signup-link a {
+    text-decoration: none;
+}
+

@@ -4,7 +4,7 @@ import React from "react";
 
 const ListingList = () => {
     return (
-        <main className="list-main">
+        <div className="list-main">
             <div className="listing-wrapper">
                 <div className="list-title">Gear</div>
                 <input type="search" id="gear-input" placeholder="Browse gear" className="group-input" />
@@ -15,7 +15,7 @@ const ListingList = () => {
                     <li className="list-l"><a href="/">current placeholder</a></li>
                 </ul>
             </div>
-        </main>
+        </div>
     );
 };
 

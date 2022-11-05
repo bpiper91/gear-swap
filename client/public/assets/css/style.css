@@ -1,0 +1,346 @@
+*{
+    margin: 0;
+}
+/* Header */
+.header-main {
+    width: 100%;
+    height: 8vh;
+    background-color: dimgray;
+}
+
+.header-name a {
+    text-decoration: none;
+    color: black;
+}
+
+.header-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header-name {
+    font-size: 4vw;
+    font-weight: 600;
+}
+
+.login-signup-wrapper {
+    display: flex;
+    flex-direction: row;
+    font-size: 33px;
+}
+
+.login-link {
+    margin-right: 10px;
+}
+
+.login-link a,
+.signup-link a {
+    text-decoration: none;
+}
+/* Home  */
+main{
+    height: 92vh;
+    background-image: url(../../assets/images/city-background.jpg);
+    background-size: 100% 100%;
+}
+.browse-btn {
+    width: 60%;
+    height: 6vh;
+    transform: translateX(35%);
+    border-radius: 5px;
+    background-color: rebeccapurple;
+    font-size: 22px;
+    cursor: pointer;
+}
+/* login */
+.login-main {
+    height: 92vh;
+    background-image: url(../../assets/images/city-background.jpg);
+    background-size: 100% 100%;
+}
+
+.login-sheet-background {
+    height: 60%;
+    width: 40%;
+    border: 1px solid black;
+    border-radius: 10px;
+    position: absolute;
+    transform: translate(75%, 25%);
+    background-color: white;
+    opacity: 50%;
+}
+
+.login-sheet {
+    height: 60%;
+    width: 40%;
+    position: absolute;
+    transform: translate(75%, 25%);
+}
+
+.login-title {
+    text-align: center;
+    padding-top: 20px;
+}
+
+#email-password-wrapper {
+    padding-top: 40px;
+    transform: translateX(10%);
+}
+
+/* class for both Email and Password title texts */
+.login-epass {
+    padding-top: 20px;
+    font-size: larger;
+}
+
+/* class for both Email and Password inputs */
+.login-epass-input {
+    width: 80%;
+    height: 3vh;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+#rem-button {
+    height: 20px;
+    width: 20px;
+}
+
+.rem-for-flex-container {
+    position: relative;
+    margin-left: 4vw;
+    margin-right: 4vw;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.checkbox-text-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.forgot-pass a {
+    text-decoration: none;
+    color: rebeccapurple;
+}
+
+.remember-me-text,
+.forgot-pass a {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.login-submit-btn {
+    height: 4vh;
+    width: 50%;
+    transform: translateX(50%);
+    margin-top: 60px;
+    border-radius: 40px;
+    background-color: rebeccapurple;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.register {
+    margin-left: 4vw;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.register a {
+    text-decoration: none;
+}
+
+.login-copyright {
+    text-align: center;
+    color: dimgray;
+    margin-top: 14vh;
+}
+/* Profile */
+.profile-main {
+    height: 92vh;
+    background-color: #b3b3b3;
+}
+
+.user-name {
+    text-align: center;
+    font-size: 40px;
+}
+
+.user-groups-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 8vh;
+    height: 66vh;
+    border: 1px solid black;
+    width: 250px;
+}
+
+.user-groups {
+    height: 30vh;
+    width: 250px;
+    border: 1px solid red;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.user-groups:hover {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.user-groups ul {
+    list-style-type: none;
+    margin-left: -20px;
+    margin-top: 20px;
+}
+
+.user-groups-title {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.user-group-list a,
+.user-group-list {
+    font-size: 18px;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+.user-messages-container {
+    border: 1px solid green;
+    height: 36vh;
+}
+
+.user-messages-title {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.user-messages-list-cont ul {
+    list-style-type: none;
+    margin-left: -20px;
+    margin-top: 20px;
+}
+
+.user-message {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+.active-listings-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border: 1px solid blue;
+    height: 26vh;
+    width: 100vw;
+}
+/* Signup */
+.login-copyright-s {
+    text-align: center;
+    color: dimgray;
+    margin-top: 6vh;
+}
+/* Footer */
+.footer-main {
+    width: 100%;
+    height: 8vh;
+    background-color: dimgray;
+}
+/* Group List */
+.grouplist-main {
+    height: 40vh;
+    position: absolute;
+    top: 15vh;
+    z-index: 1;
+    background-color: #aeaeae;
+    border-bottom: 1px solid black;
+}
+
+.group-list-title {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+/* controls search input in GroupList and ListingList index files */
+.group-input {
+    transform: translateX(20%);
+    margin-top: 5px;
+    width: 70%;
+}
+
+.grouplist-list {
+    margin-top: 20px;
+    font-size: 22px;
+    padding-left: 20px;
+}
+
+ul {
+    list-style-type: none;
+}
+.list-g, .list-g a {
+    text-decoration: none;
+    color: #152f84;
+    margin-top: 8px;
+}
+.list-wrapper {
+    width: 300px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: 40vh;
+}
+.list-wrapper:hover {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+/* Listing List */
+.list-main {
+    height: 40vh;
+    position: absolute;
+    bottom: 5vh;
+    z-index: 1;
+    background-color: #aeaeae;
+    border-top: 1px solid black;
+}
+
+.list-title {
+    text-align: center;
+    font-size: 30px;
+}
+
+.list-list {
+    margin-top: 20px;
+    font-size: 22px;
+    padding-left: 20px;
+}
+
+.listing-wrapper {
+    width: 300px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: 40vh;
+}
+
+.listing-wrapper:hover {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.list-l,
+.list-l a {
+    text-decoration: none;
+    color: #152f84;
+    margin-top: 8px;
+}

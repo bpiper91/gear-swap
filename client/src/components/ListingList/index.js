@@ -1,8 +1,13 @@
 import React from "react";
 
-// this page is using 'grouplist.css' due to same "classnames"
-
-const ListingList = () => {
+const ListingList = (listings) => {
+    if (!listings.length) {
+      return (
+        <div>
+          <h2>No Listings Yet</h2>
+        </div>
+      );
+    }
     return (
         <div className="list-main">
             <div className="listing-wrapper">

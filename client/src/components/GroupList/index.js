@@ -5,8 +5,6 @@ if (!groups.length) {
   return (
     <div>
       <h2>No Groups Yet</h2>
-      <input type="search" id="group-input" placeholder="Browse groups" className="group-input" />
-      <ul className="grouplist-list"></ul>
     </div>
   );
 }

@@ -2,16 +2,16 @@ import React from 'react';
 import GroupList from '../components/GroupList';
 import ListingList from '../components/ListingList';
 import { useQuery } from "@apollo/client";
-import { QUERY_GROUPS } from "../utils/queries";
+import { QUERY_GROUPS, QUERY_LISTINGS_DISPLAY } from "../utils/queries";
 import Auth from "../utils/auth";
 
 
 const Home = () => {
   // use useQuery hook to make query request
-  const { data } = useQuery(QUERY_GROUPS);
-  console.log(data);
-  const groups = data?.groups || []
-  console.log(groups)
+  const { groupData } = useQuery(QUERY_GROUPS);
+  const { listingsData } = useQuery(QUERY_LISTINGS_DISPLAY)
+  const groups = groupData?.groups || []
+  const listings = listingsData?.listingsDisplay || []
   const loggedIn = Auth.loggedIn();
   return (
     <>
@@ -19,7 +19,9 @@ const Home = () => {
         <GroupList
           groups={groups}
         />
-        <ListingList/>
+        <ListingList
+          listings={listings}
+        />
         <div className="homepage">
           {loggedIn && (
           <a href="/profile" className="listing-btn-a">

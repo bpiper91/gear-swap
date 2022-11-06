@@ -160,6 +160,25 @@ export const QUERY_LISTING = gql`
     }
 `;
 
+export const QUERY_LISTINGS_DISPLAY = gql`
+    query ListingsDisplay($groupId: ID!) {
+        listingsDisplay(groupId: $groupId) {
+            _id
+            title
+            description
+            value
+            creator {
+                _id
+                firstName
+                lastName
+                location
+                completedSwaps
+            }
+            images
+        }
+    } 
+`;
+
 export const QUERY_SWAP = gql`
     query Swap($id: ID!, $groupName: String!) {
         swap(_id: $id, groupName: $groupName) {

@@ -42,8 +42,23 @@ const resolvers = {
                 .populate('admins');
         },
         listing: async (parent, { _id }) => {
-            return Listing.findOne({ _id });
-            
+            return Listing.findOne({ _id })
+                .populate('creator');
+        },
+        listingsDisplay: async (parent, { groupId }, context) => {
+            const group = await Group.findOne({ _id: groupId });
+
+            let listingsDisplay = [];
+
+            for (i = 0; i < group.listings.length; i++) {
+                const listingToAdd = await Listing.findOne(
+                    { _id: group.listings[i] }
+                ).populate('creator');
+
+                listingsDisplay.push(listingToAdd);
+            };
+
+            return listingsDisplay;
         },
         swap: async (parent, { _id, groupName }, context) => {
             const dbSwap = await Swap.findOne({ _id })

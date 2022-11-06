@@ -4,7 +4,7 @@ import ListingList from '../components/ListingList';
 import { useQuery } from "@apollo/client";
 import { QUERY_GROUPS, QUERY_LISTINGS_DISPLAY } from "../utils/queries";
 import Auth from "../utils/auth";
-
+import { Link } from "react-router-dom";
 
 const Home = () => {
   // use useQuery hook to make query request
@@ -24,34 +24,34 @@ const Home = () => {
         />
         <div className="homepage">
           {loggedIn && (
-          <a href="/profile" className="listing-btn-a">
+          <Link to="/profile" className="listing-btn-a">
             <input
               id="profile-btn"
               type="submit"
               value="Your Profile"
               className="browse-btn"
             />
-          </a>
+          </Link>
           )}
           <div className="profile-btn"></div>
           <div className="login-sheet-background"></div>
           <div className="login-sheet">
-            <a href="/" className="listing-btn-a">
+            <Link to="/" className="listing-btn-a">
               <input
                 id="group-browse-btn"
                 type="submit"
                 value="Browse groups near you!"
                 className="browse-btn"
               />
-            </a>
-            <a href="/" className="listing-btn-a">
+            </Link>
+            <Link to="/" className="listing-btn-a">
               <input
                 id="listing-browse-btn"
                 type="submit"
                 value="Browse Gear"
                 className="browse-btn"
               />
-            </a>
+            </Link>
             <div className="login-copyright">
               @2022 Gear Swap™ All rights reserved
             </div>

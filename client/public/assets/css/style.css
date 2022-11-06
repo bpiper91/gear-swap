@@ -30,13 +30,9 @@
     font-size: 33px;
 }
 
-.login-link {
-    margin-right: 10px;
-}
-
-.login-link a,
-.signup-link a {
+.navbar-link a {
     text-decoration: none;
+    margin-right: 10px;
 }
 /* Home  */
 main{
@@ -76,6 +72,7 @@ main{
     width: 40%;
     position: absolute;
     transform: translate(75%, 25%);
+    background-color: white;
 }
 
 .login-title {

@@ -112,7 +112,7 @@ const NewListing = (groupId) => {
                     newListingImages.map(image => (
                         <figure key={i} className='upload-image-preview' style="width: 30%;">
                             <img src={image} style="max-height: 200px; object-fit: scale-down;"
-                                onClick={deleteUploadedImage(image)} />
+                                onClick={deleteUploadedImage(image)} alt="listing" />
                         </figure>
                     ))}
                     <p style='clear: both;'>Listings can include a maximum of 3 images. Click on an image thumbnail to delete it.</p>

@@ -48,7 +48,9 @@ const resolvers = {
         swap: async (parent, { _id, groupName }, context) => {
             const dbSwap = await Swap.findOne({ _id })
                 .populate('proposerListings')
-                .populate('responderListings');
+                .populate('responderListings')
+                .populate('swapMessage')
+                .populate('group');
 
             if (context.user._id === dbSwap.proposer || context.user._id === dbSwap.responder) {
                 return dbSwap;

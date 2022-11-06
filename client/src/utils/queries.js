@@ -55,6 +55,14 @@ export const QUERY_USER = gql`
     }
 `;
 
+// export const QUERY_GROUP = gql`
+
+// `;
+
+// export const QUERY_GROUPS = gql`
+
+// `;
+
 export const QUERY_GROUPS_PUBLIC = gql`
     query GroupsPublic {
         groupsPublic {
@@ -81,3 +89,15 @@ export const QUERY_GROUPS_PUBLIC = gql`
         }
     }
 `;
+
+// export const QUERY_LISTING = gql`
+
+// `;
+
+// export const QUERY_SWAP = gql`
+
+// `;
+
+// export const QUERY_MESSAGE = gql`
+
+// `;

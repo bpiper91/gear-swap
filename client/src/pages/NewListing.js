@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import CloudinaryUploadWidget from "../CloudinaryUploadWidget";
-import Auth from '../utils/auth';
 import { gql, useMutation } from '@apollo/client';
 import { CREATE_LISTING } from '../utils/mutations';
 import { useNewListingContext } from './utils/GlobalState';
@@ -88,25 +87,33 @@ const NewListing = (groupId) => {
     return (
         <div className='new-listing'>
             <form id='new-listing-form' onSubmit={handleFormSubmit}>
+                <label for='listing-title'>Title: </label>
                 <input 
                     name='listing-title'
+                    id='listing-title'
                     placeholder='Listing title...'
                     value={listingTitle}
                     onChange={handleFormChange}
                 ></input>
+                <label for='listing-value'>Est. Value: </label>
                 <input
                     name='listing-value'
+                    id='listing-value'
                     placeholder='Est. value (USD)'
                     value={listingValue}
                     onChange={handleFormChange}
                 ></input>
+                <label for='listing-description'>Description: </label>
                 <textarea
                     name='listing-description'
+                    id='listing-description'
                     placeholder='Describe your gear here...'
                     value={listingDescription}
                     onChange={handleFormChange}
                 ></textarea>
+                <p>Image Upload:</p>
                 <CloudinaryUploadWidget />
+                <p>Image Upload Preview: </p>
                 <div className='upload-images' style="width: 90%; margin-right: auto; margin-left: auto;">
                     {newListingImages && 
                     newListingImages.map(image => (
@@ -117,7 +124,7 @@ const NewListing = (groupId) => {
                     ))}
                     <p style='clear: both;'>Listings can include a maximum of 3 images. Click on an image thumbnail to delete it.</p>
                 </div>
-                <button type='submit'>Create New Listing</button>
+                <button type='submit' id='new-listing-btn' value='create-listing'>Create New Listing</button>
             </form>
         </div>
     );

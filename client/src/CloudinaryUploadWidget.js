@@ -1,6 +1,6 @@
 require('dotenv').config();
 import React, { Component } from "react";
-import { useNewListingContext } from './utils/GlobalState';
+// import { useNewListingContext } from './utils/GlobalState';
 import { UPDATE_NEW_LISTING_IMAGES } from './utils/actions';
 
 class CloudinaryUploadWidget extends Component {
@@ -28,17 +28,17 @@ class CloudinaryUploadWidget extends Component {
             (error, result) => {
                 if (!error && result && result.event === "success") {
                     const newImageURL = result.info.secure_url;
-                    if (newLisingImages.length < 3) {
+                    if (newListingImages.length < 3) {
                         dispatchEvent({
                             type: UPDATE_NEW_LISTING_IMAGES,
                             newLisingImages: [...newListingImages, newImageURL]
                         });
                     };
 
-                    // document
-                    //     .getElementById("uploadedimage")
-                    //     .setAttribute("src", result.info.secure_url); 
-                    //     // pass this variable to the updateListing mutation
+                    document
+                        .getElementById("uploadedimage")
+                        .setAttribute("src", result.info.secure_url); 
+                        // pass this variable to the updateListing mutation
                 }
             }
         );

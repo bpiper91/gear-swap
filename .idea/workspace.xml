@@ -4,34 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c19727d6-4438-483e-916b-1a68b6e9b7ee" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/CloudinaryUploadWidget.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/__tests__/reducers.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/NewListing.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/utils/GlobalState.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/utils/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/utils/auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/utils/reducers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="a617d3d1-9f03-4220-9a49-e41d384529c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/utils/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/mutations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/Group.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Group.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/CloudinaryUploadWidget.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/CloudinaryUploadWidget.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/assets/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/css/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils/GlobalState.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/GlobalState.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="CSS File" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -39,60 +23,38 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2Gy8LxB6QCuqJQ3PK4621p2PdD6" />
+  <component name="ProjectId" id="2HE8RDGcWwKBQYmvPR0umVXnh0O" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kcart/WebstormProjects/untitled1&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\kcart\WebstormProjects\untitled1\client\src\components\Header" />
-      <recent name="C:\Users\kcart\WebstormProjects\untitled1\client\components\Header" />
-      <recent name="C:\Users\kcart\WebstormProjects\untitled1\client\src\assets\css" />
-    </key>
-  </component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c19727d6-4438-483e-916b-1a68b6e9b7ee" name="Changes" comment="" />
-      <created>1667349411027</created>
+      <changelist id="a617d3d1-9f03-4220-9a49-e41d384529c2" name="Changes" comment="" />
+      <created>1667838871852</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1667349411027</updated>
-      <workItem from="1667349412285" duration="150000" />
-      <workItem from="1667349831045" duration="35251000" />
-      <workItem from="1667516167771" duration="2441000" />
+      <updated>1667838871852</updated>
+      <workItem from="1667838875933" duration="2726000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>

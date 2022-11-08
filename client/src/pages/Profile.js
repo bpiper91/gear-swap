@@ -1,10 +1,13 @@
 import React from "react";
+// import CloudinaryUploadWidget from "../CloudinaryUploadWidget";
 // <div className="" id=""></div>
 // <div className=""></div>
 const Profile = () => {
     return (
         <main className="profile-main">
-            <div className="user-name" id="user-name">Hello, ""</div>
+            <div className="user-name" id="user-name">
+            <span id="upload-widget-btn"></span>
+            </div>
             <div className="user-groups-container" id="user-groups-container">
                 
                 {/* NEED: display users groups in user-group-list */}
@@ -15,12 +18,12 @@ const Profile = () => {
                         <li className="user-group-list"><a href="/"><span id="user-group-list"></span></a></li>
                         {/* delete following placeholders when inputs display */}
                         <li className="user-group-list"><a href="/">current placeholder</a></li>
-                        <li className="user-group-list"><a href="/">current placeholder</a></li>
-                        <li className="user-group-list"><a href="/">current placeholder</a></li>
-                        <li className="user-group-list"><a href="/">current placeholder</a></li>
-                        <li className="user-group-list"><a href="/">current placeholder</a></li>
-                        <li className="user-group-list"><a href="/">current placeholder</a></li>
-                        <li className="user-group-list"><a href="/">current placeholder</a></li>
+                        {/*<li className="user-group-list"><a href="/">current placeholder</a></li>*/}
+                        {/*<li className="user-group-list"><a href="/">current placeholder</a></li>*/}
+                        {/*<li className="user-group-list"><a href="/">current placeholder</a></li>*/}
+                        {/*<li className="user-group-list"><a href="/">current placeholder</a></li>*/}
+                        {/*<li className="user-group-list"><a href="/">current placeholder</a></li>*/}
+                        {/*<li className="user-group-list"><a href="/">current placeholder</a></li>*/}
                     </ul>
                 </div>
                 
@@ -38,13 +41,15 @@ const Profile = () => {
                             </li>
                             {/* delete following placeholders when inputs display */}
                             <li className="user-message"> Name:"" Message:""</li>
-                            <li className="user-message"> Name:"" Message:""</li>
-                            <li className="user-message"> Name:"" Message:""</li>
+                            {/*<li className="user-message"> Name:"" Message:""</li>*/}
+                            {/*<li className="user-message"> Name:"" Message:""</li>*/}
                         </ul>
                     </div>
                 </div>
             </div>
-            <div className="active-listings-container">
+
+
+            <section className="active-listings-container">
                 <div className="photo-desc-wrapper">
                     <div className="listing-photo" id="listing-photo">
                         <span className="listing-photo" id="listing-photo"></span>
@@ -53,8 +58,9 @@ const Profile = () => {
                         <span className="listing-desc" id="listing-desc"></span>
                     </div>
                 </div>
-            </div>
-        </main>
+            </section>        
+            </main>
+
     )
 };
 export default Profile;

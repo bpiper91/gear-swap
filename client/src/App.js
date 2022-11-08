@@ -1,9 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import './App.css';
-import { setContext } from '@apollo/client/link/context';
-import { NewListingProvider } from './utils/GlobalState';
+// import { setContext } from '@apollo/client/link/context';
+// import { NewListingProvider } from './utils/GlobalState';
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";

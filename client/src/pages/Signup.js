@@ -19,11 +19,11 @@ const Signup = () => {
 
     // update state when form changes
     const handleFormChange = (event) => {
-        if (event.target.name === 'firstname-i') {
+        if (event.target.name === 'firstname') {
             setSignupState({ ...signupState, firstName: event.target.value });
-        } else if (event.target.name === 'lastname-i') {
+        } else if (event.target.name === 'lastname') {
             setSignupState({ ...signupState, lastName: event.target.value });
-        } else if (event.target.name === 'email-i') {
+        } else if (event.target.name === 'email') {
             setSignupState({ ...signupState, email: event.target.value });
 
             // check to make sure email is correct format
@@ -35,7 +35,7 @@ const Signup = () => {
             } else {
                 setEmailValidationState('');
             };
-        } else if (event.target.name === 'password-i') {
+        } else if (event.target.name === 'password') {
             setSignupState({ ...signupState, password: event.target.value });
 
             // check to make sure password is at least 6 characters
@@ -47,7 +47,7 @@ const Signup = () => {
             } else {
                 setPwValidationState('');
             };
-        } else if (event.target.name === 'location-i') { 
+        } else if (event.target.name === 'location') { 
             setSignupState({ ...signupState, location: event.target.value});
         } else {
             return false;
@@ -67,6 +67,7 @@ const Signup = () => {
         };
 
         try {
+            console.log(signupState); // signupState is up-to-date here
             const { data } = await createUser({
                 variables: { ...signupState }
             });
@@ -88,7 +89,7 @@ const Signup = () => {
 
                     <h4 className="login-epass">* First Name</h4>
                     <input 
-                        name="firstname-i" 
+                        name="firstname" 
                         className="login-epass-input" 
                         placeholder="First Name" 
                         value={signupState.firstName}
@@ -96,7 +97,7 @@ const Signup = () => {
                     />
                     <h4 className="login-epass">* Last Name</h4>
                     <input 
-                        name="lastname-i" 
+                        name="lastname" 
                         className="login-epass-input" 
                         placeholder="Last Name" 
                         value={signupState.lastName}
@@ -104,7 +105,7 @@ const Signup = () => {
                     />
                     <h4 className="login-epass">* Email{emailValidationState !== '' && `   ${emailValidationState}`}</h4>
                     <input 
-                        name="email-i" 
+                        name="email" 
                         className="login-epass-input" 
                         placeholder="Email Address"
                         value={signupState.email} 
@@ -113,7 +114,7 @@ const Signup = () => {
                     <h4 className="login-epass">* Password{pwValidationState !== '' && `   ${pwValidationState}`}</h4>
                     <input 
                         type="password"
-                        name="password-i" 
+                        name="password" 
                         className="login-epass-input" 
                         placeholder="Password" 
                         value={signupState.password}
@@ -121,7 +122,7 @@ const Signup = () => {
                     />
                     <h4 className="login-epass">  Location</h4>
                     <input 
-                        name="location-i" 
+                        name="location" 
                         className="login-epass-input" 
                         placeholder="Location" 
                         value={signupState.location}

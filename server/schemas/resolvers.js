@@ -115,7 +115,7 @@ const resolvers = {
 
             return { token, user };
         },
-        logIn: async (parent, { email, password }) => {
+        login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
 
             if (!user) {
@@ -149,9 +149,18 @@ const resolvers = {
         },
         updateUserGroups: async (parent, args, context) => {
             if (context.user) {
+                let userId;
+
+                    if (args._id) {
+                        userId = args._id;
+                    } else {
+                        userId = context.user._id;
+                    };
+
                 if (args.groups) {
+
                     const updateUser = await User.findOneAndUpdate(
-                        { _id: args._id },
+                        { _id: userId },
                         { $addToSet: { groups: args.groups } },
                         { new: true }
                     );
@@ -166,7 +175,7 @@ const resolvers = {
 
                 if (args.removeGroups) {
                     const updateUser = await User.findOneAndUpdate(
-                        { _id: args._id },
+                        { _id: userId },
                         { $pull: { groups: args.removeGroups } },
                         { new: true }
                     );

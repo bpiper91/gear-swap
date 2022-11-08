@@ -62,11 +62,11 @@ function App() {
                 element={<Signup />}
               />
               <Route
-                path="/group/:id"
+                path="/g/:groupId"
                 element={<SingleGroup />}
               />
               <Route
-                path="/listing/:id"
+                path="/g/:groupId/l/:listingId"
                 element={<SingleListing />}
               />
               <Route

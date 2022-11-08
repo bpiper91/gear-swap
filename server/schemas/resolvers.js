@@ -24,6 +24,10 @@ const resolvers = {
                 .populate('listings')
                 .populate('groups')
         },
+        users: async (parent, args, context) => {
+            return User.find()
+                .select('-__v, -password');
+        },
         group: async (parent, {_id }) => {
             return Group.findOne({_id })
                 .populate('listings')

@@ -55,6 +55,31 @@ export const QUERY_USER = gql`
     }
 `;
 
+export const QUERY_USERS = gql`
+    query Users {
+        users {
+            _id
+            firstName
+            lastName
+            email
+            location
+            groups {
+                _id
+            }
+            listings {
+                _id
+            }
+            activeSwaps {
+                _id
+            }
+            completedSwaps
+            messages {
+                _id
+            }
+        }
+    }
+`;
+
 export const QUERY_GROUP = gql`
     query Group($id: ID!) {
         group(_id: $id) {

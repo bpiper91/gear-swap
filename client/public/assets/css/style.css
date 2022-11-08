@@ -12,13 +12,15 @@
 /* Header */
 .header-main {
     width: 100%;
-    height: 8vh;
+    height: 0vh;
     background-color: dimgray;
 }
 
 .header-name a {
     text-decoration: none;
     color: black;
+    margin-left: 20px;
+
 }
 
 .header-wrapper {
@@ -28,7 +30,7 @@
 }
 
 .header-name {
-    font-size: 4vw;
+    font-size: 60px;
     font-weight: 600;
 }
 
@@ -36,30 +38,42 @@
     display: flex;
     flex-direction: row;
     font-size: 33px;
+    transform: translateY(20%);
 }
 
 .navbar-link a {
     text-decoration: none;
-    margin-right: 10px;
+    margin-right: 30px;
+    color: black;
 }
 /* Home  */
-main{
-    height: 92vh;
+.home-main-class{
     background-image: url(../../assets/images/city-background.jpg);
     background-size: 100% 100%;
 }
-.browse-btn {
-    width: 60%;
-    height: 6vh;
-    transform: translateX(35%);
-    border-radius: 5px;
-    background-color: rebeccapurple;
-    font-size: 22px;
-    cursor: pointer;
+
+.group-browse-container {
+        border: 1px solid black;
+        position: absolute;
+        bottom: 0;
+        height: 90vh;
+        background-image: linear-gradient(to right, #646464, #949393);
 }
+
+.group-listings-container {
+    border: 1px solid black;
+}
+
+#group-item,
+#group-item a{
+    text-decoration: none;
+    color: black;
+    margin-top: 2%;
+}
+
 /* login */
 .login-main {
-    height: 92vh;
+    height: 100vh;
     background-image: url(../../assets/images/city-background.jpg);
     background-size: 100% 100%;
 }
@@ -80,7 +94,8 @@ main{
     width: 40%;
     position: absolute;
     transform: translate(75%, 25%);
-    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
 }
 
 .login-title {
@@ -162,12 +177,13 @@ main{
 
 .login-copyright {
     text-align: center;
-    color: dimgray;
-    margin-top: 14vh;
+    color: #000000;
+    padding-top: 70vh;
+
 }
 /* Profile */
 .profile-main {
-    height: 92vh;
+    height: 100vh;
     background-color: #b3b3b3;
 }
 
@@ -251,17 +267,14 @@ main{
     height: 26vh;
     width: 100vw;
 }
-/* Signup */
-.login-copyright-s {
-    text-align: center;
-    color: dimgray;
-    margin-top: 6vh;
-}
+/* Signup uses "LOGIN" css styling */
+
 /* Footer */
 .footer-main {
     width: 100%;
     height: 8vh;
-    background-color: dimgray;
+    background-color: black;
+    color: white;
 }
 /* Group List */
 .grouplist-main {

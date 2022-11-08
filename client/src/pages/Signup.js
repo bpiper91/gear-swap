@@ -130,9 +130,10 @@ const Signup = () => {
                     />
                 </div>
                 <button id="signup-submit" type="submit" value="Sign Up" className="login-submit-btn">Create Account</button>
-                <div className="login-copyright-s">@2022 Gear Swap™ All rights reserved</div>
+
             </form>
             {error && <p>Failed to sign up new user.</p>}
+            <div className="login-copyright">@2022 Gear Swap™ All rights reserved</div>
         </main>
     )
 };

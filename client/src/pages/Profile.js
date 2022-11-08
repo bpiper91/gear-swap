@@ -18,12 +18,12 @@ const Profile = () => {
                         <li className="user-group-list"><a href="/"><span id="user-group-list"></span></a></li>
                         {/* delete following placeholders when inputs display */}
                         <li className="user-group-list"><a href="/">current placeholder</a></li>
-                        {/*<li className="user-group-list"><a href="/">current placeholder</a></li>*/}
-                        {/*<li className="user-group-list"><a href="/">current placeholder</a></li>*/}
-                        {/*<li className="user-group-list"><a href="/">current placeholder</a></li>*/}
-                        {/*<li className="user-group-list"><a href="/">current placeholder</a></li>*/}
-                        {/*<li className="user-group-list"><a href="/">current placeholder</a></li>*/}
-                        {/*<li className="user-group-list"><a href="/">current placeholder</a></li>*/}
+                        <li className="user-group-list"><a href="/">current placeholder</a></li>
+                        <li className="user-group-list"><a href="/">current placeholder</a></li>
+                        <li className="user-group-list"><a href="/">current placeholder</a></li>
+                        <li className="user-group-list"><a href="/">current placeholder</a></li>
+                        <li className="user-group-list"><a href="/">current placeholder</a></li>
+                        <li className="user-group-list"><a href="/">current placeholder</a></li>
                     </ul>
                 </div>
                 
@@ -41,8 +41,8 @@ const Profile = () => {
                             </li>
                             {/* delete following placeholders when inputs display */}
                             <li className="user-message"> Name:"" Message:""</li>
-                            {/*<li className="user-message"> Name:"" Message:""</li>*/}
-                            {/*<li className="user-message"> Name:"" Message:""</li>*/}
+                            <li className="user-message"> Name:"" Message:""</li>
+                            <li className="user-message"> Name:"" Message:""</li>
                         </ul>
                     </div>
                 </div>

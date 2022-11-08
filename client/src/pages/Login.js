@@ -5,7 +5,6 @@ import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
 // NEEDS: code to validate email & login info
 // NEEDS: upon validation, login button will take user to 'profile.js'
-
 const Login = () => {
     const [formState, setFormState] = useState({
         email: '',
@@ -46,7 +45,9 @@ const Login = () => {
     };
 
     return (
+
         <div className="login-main">
+            <div className="login-sheet-background"></div>
             <div className="login-sheet">
                 <form id='login' onSubmit={handleFormSubmit}>
                     <h1 className="login-title">Log In</h1>
@@ -83,10 +84,11 @@ const Login = () => {
                         <button id="login-submit" type="submit" value="Login" className="login-submit-btn">Log In</button>
                     </Link>
                     <div className="register">Not registered yet? <Link to="/signup" className="login-signup-link">Create an account</Link></div>
-                    <div className="login-copyright">@2022 Gear Swap™ All rights reserved</div>
+
                 </form>
                 {error && <p>Failed to log in user.</p>}
             </div>
+            <div className="login-copyright">@2022 Gear Swap™ All rights reserved</div>
         </div>
     )
 };

@@ -1,3 +1,11 @@
+/* HEADER - Line 12 */
+/* HOME - line 45 */
+/* LOGIN - line 60 */
+/* PROFILE - line 168 */
+/* SIGNUP - line 254 */
+/* FOOTER - line 260 */
+/* GROUPLIST - line 266 */
+/* LISTINGLIST - line 314 */
 *{
     margin: 0;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -5,23 +13,24 @@
 /* Header */
 header{
     width: 100%;
-    height: 100%;
+    height: 0vh;
     background-color: dimgray;
     
 }
 header a {
     text-decoration: none;
     color: black;
+    margin-left: 20px;
+
 }
 .header-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.header-name a {
-    text-decoration: none;
-    color: black;
-    font-size: 4vw;
+
+.header-name {
+    font-size: 60px;
     font-weight: 600;
     cursor: pointer;
 }
@@ -29,45 +38,42 @@ header a {
     display: flex;
     flex-direction: row;
     font-size: 33px;
-    padding: 10px
+    transform: translateY(20%);
 }
-.navBtn-wrapper a{
-    margin: 5px;
-}
-.navBtn {
-    background-color: rebeccapurple;
-    padding: 5px;
-    border-radius: 10px;
-}
-.navBtn:hover {
-    color: white;
+
+.navbar-link a {
+    text-decoration: none;
+    margin-right: 30px;
+    color: black;
 }
 /* Home  */
-main{
-    height: 100vh;
-    width: 100;
+.home-main-class{
     background-image: url(../../assets/images/city-background.jpg);
     background-size: 100% 100%;
 }
-ul {
-    list-style-type: none;
-    width: 50%;
-    margin-right: 0px;
+
+.group-browse-container {
+        border: 1px solid black;
+        position: absolute;
+        bottom: 0;
+        height: 90vh;
+        background-image: linear-gradient(to right, #646464, #949393);
 }
-.lists {
-    background-color: rgba(0, 0, 0, .5);
-    border-radius: 10px;
-    padding: 10px;
+
+.group-listings-container {
+    border: 1px solid black;
 }
-.lists h2 {
-    color: white;
+
+#group-item,
+#group-item a{
+    text-decoration: none;
+    color: black;
+    margin-top: 2%;
 }
-.row{
-    margin: 10px;
-}
+
 /* login */
 .login-main {
-    height: 92vh;
+    height: 100vh;
     background-image: url(../../assets/images/city-background.jpg);
     background-size: 100% 100%;
 }
@@ -88,7 +94,8 @@ ul {
     width: 40%;
     position: absolute;
     transform: translate(75%, 25%);
-    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
 }
 
 .login-title {
@@ -154,12 +161,13 @@ ul {
 
 .login-copyright {
     text-align: center;
-    color: dimgray;
-    margin-top: 14vh;
+    color: #000000;
+    padding-top: 70vh;
+
 }
 /* Profile */
 .profile-main {
-    height: 92vh;
+    height: 100vh;
     background-color: #b3b3b3;
 }
 
@@ -243,11 +251,98 @@ ul {
     height: 26vh;
     width: 100vw;
 }
+/* Signup uses "LOGIN" css styling */
 
 /* Footer */
 .footer-main {
     width: 100%;
-    height: 100%;
-    background-color: dimgray;
-    overflow: hidden;
+    height: 8vh;
+    background-color: black;
+    color: white;
+}
+/* Group List */
+.grouplist-main {
+    height: 40vh;
+    position: absolute;
+    top: 15vh;
+    z-index: 1;
+    background-color: #aeaeae;
+    border-bottom: 1px solid black;
+}
+
+.group-list-title {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+/* controls search input in GroupList and ListingList index files */
+.group-input {
+    transform: translateX(20%);
+    margin-top: 5px;
+    width: 70%;
+}
+
+.grouplist-list {
+    margin-top: 20px;
+    font-size: 22px;
+    padding-left: 20px;
+}
+
+ul {
+    list-style-type: none;
+}
+.list-g, .list-g a {
+    text-decoration: none;
+    color: #152f84;
+    margin-top: 8px;
+}
+.list-wrapper {
+    width: 300px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: 40vh;
+}
+.list-wrapper:hover {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+/* Listing List */
+.list-main {
+    height: 40vh;
+    position: absolute;
+    bottom: 5vh;
+    z-index: 1;
+    background-color: #aeaeae;
+    border-top: 1px solid black;
+}
+
+.list-title {
+    text-align: center;
+    font-size: 30px;
+}
+
+.list-list {
+    margin-top: 20px;
+    font-size: 22px;
+    padding-left: 20px;
+}
+
+.listing-wrapper {
+    width: 300px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: 40vh;
+}
+
+.listing-wrapper:hover {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.list-l,
+.list-l a {
+    text-decoration: none;
+    color: #152f84;
+    margin-top: 8px;
 }

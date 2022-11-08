@@ -1,14 +1,16 @@
 import React from "react";
-import { useQuery } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 import { QUERY_GROUPS_PUBLIC } from '../../utils/queries';
 import { Link } from "react-router-dom";
 
 const GroupList = () => {
-  let noGroups = false;
-  const { data } = useQuery(QUERY_GROUPS_PUBLIC);
-  const groups = data.groupsPublic;
+  const { loading, data } = useQuery(QUERY_GROUPS_PUBLIC);
 
-  if (groups.length == 0) {
+  console.log(data)
+
+  let noGroups = false;
+
+  if (data && data.groupsPublic.length == 0) {
     noGroups = true;
   };
 
@@ -18,9 +20,9 @@ const GroupList = () => {
         <h2 className="group-list-title">Groups</h2>
         <input type="search" id="group-input" placeholder="Browse groups" className="group-input" />
         <ul className="grouplist-list">
-          {noGroups && <li><h2>No Groups Found</h2></li>}
-          {groups &&
-            groups.map(group => (
+          {loading && <li><h2>Loading Groups</h2></li>}
+          {data &&
+            data.groupsPublic.map(group => (
               <li key={group._id}>
                 <h2>
                   <Link to={`/g/${group._id}`}>

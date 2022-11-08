@@ -42,7 +42,7 @@ const resolvers = {
                 .populate('admins');
         },
         groupsPublic: async () => {
-            return Group.find()
+            return Group.find({ isPublic: true })
                 .populate('admins');
         },
         listing: async (parent, { _id }) => {

@@ -51,14 +51,14 @@ const Home = () => {
             {/*  />*/}
             {/*</Link>*/}
               <div className="group-browse-container w-25 d-flex flex-column">
-                  <div className="group-search h3 text-center ">Find a group</div>
+                  <div className="group-search text-center ">Find a group</div>
                   <div className="group-listings-container h-100">
                     <ul>
-                        <li id="group-item"><a href="../components/GroupList">group 1</a></li>
-                        <li id="group-item"><a href="../components/GroupList">group 2</a></li>
-                        <li id="group-item"><a href="../components/GroupList">group 3</a></li>
-                        <li id="group-item"><a href="../components/GroupList">group 4</a></li>
-                        <li id="group-item"><a href="../components/GroupList">group 5</a></li>
+                        <li className="group-item" id="group-item/:id"><a href="../components/GroupList">group 1</a></li>
+                        <li className="group-item" id="group-item/:id"><a href="../components/GroupList">group 2</a></li>
+                        <li className="group-item" id="group-item/:id"><a href="../components/GroupList">group 3</a></li>
+                        <li className="group-item" id="group-item/:id"><a href="../components/GroupList">group 4</a></li>
+                        <li className="group-item" id="group-item/:id"><a href="../components/GroupList">group 5</a></li>
                     </ul>
                   </div>
               </div>

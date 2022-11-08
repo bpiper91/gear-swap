@@ -19,11 +19,11 @@ const UpdateMyInfo = () => {
     // update state when form changes
     const handleFormChange = (event) => {
         if (event.target.name === 'myFirstName') {
-            setFormState({ ...formState, myFirstName: event.target.value });
+            setFormState({ ...formState, firstName: event.target.value });
         } else if (event.target.name === 'myLastName') {
-            setFormState({ ...formState, myLastName: event.target.value });
+            setFormState({ ...formState, lastName: event.target.value });
         } else if (event.target.name === 'myEmail') {
-            setFormState({ ...formState, myEmail: event.target.value });
+            setFormState({ ...formState, email: event.target.value });
 
             // check to make sure email is correct format
             const result = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formState.email);
@@ -35,7 +35,7 @@ const UpdateMyInfo = () => {
                 setEmailValidationState('');
             };
         } else if (event.target.name === 'myLocation') {
-            setFormState({ ...formState, myLocation: event.target.value });
+            setFormState({ ...formState, location: event.target.value });
         } else {
             return false;
         };

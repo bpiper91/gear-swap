@@ -75,6 +75,7 @@ const typeDefs = gql`
     type Query {
         me: User
         user(_id: ID!): User
+        users: [User]
         group(_id: ID!): Group
         groups: [Group]
         groupsPublic: [Group]
@@ -85,7 +86,7 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        createUser(firstName: String!, lastName: String!, email: String!, password: String!, groups: [String]): Auth
+        createUser(firstName: String!, lastName: String!, email: String!, password: String!, location: String, groups: [String]): Auth
         logIn(email: String!, password: String!): Auth
         updateUser(_id: ID!, firstName: String, lastName: String, email: String, password: String, location: String, completedSwaps: Int): User
         updateUserGroups(_id: ID!, groups: String, removeGroups: String): User

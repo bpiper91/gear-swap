@@ -6,7 +6,7 @@ import { CREATE_LISTING } from '../utils/mutations';
 import { useNewListingContext } from './utils/GlobalState';
 import { UPDATE_NEW_LISTING_IMAGES } from './utils/actions';
 
-const NewListing = (groupName) => {
+const NewListing = (groupId) => {
     // use CREATE_LISTING mutation as createListing
     const [createListing, { data }] = useMutation(CREATE_LISTING);
     
@@ -29,29 +29,79 @@ const NewListing = (groupName) => {
     };
 
     // when the form changes, update state
-    const handleFormChange = () => {
-
+    const handleFormChange = (event) => {
+        if (event.target.name === 'listing-title') {
+            setListingTitle(event.target.value);
+        } else if (event.target.name === 'listing-value') {
+            setListingValue(event.target.value);
+        } else if (event.target.name === 'listing-description') {
+            setListingDescription(event.target.value);
+        };
     };
 
     // when the form is submitted, add a new listing to the database
-    const handleFormSubmit = () => {
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
 
+        if (!context.user) {
+            console.error('Must be logged in to do that');
+            return false;
+        } else if (listingTitle === '') {
+            console.error('A listing title is required');
+            return false;
+        };
+
+        let variables = {
+            title: listingTitle,
+            groupId: groupId
+        };
+
+        if (listingDescription !== '') {
+            variables = {...variables, description: listingDescription};
+        };
+
+        if (listingValue !== '') {
+            variables = {...variables, value: listingValue};
+        };
+
+        if (newListingImages.length > 0) {
+            variables = {...variables, images: newListingImages};
+        };
+
+        try {
+            await createListing({ variables });
+
+            // reset form fields and images
+            setListingTitle('');
+            setListingDescription('');
+            setListingValue('');
+            dispatch({
+                type: UPDATE_NEW_LISTING_IMAGES,
+                newListingImages: []
+            });
+
+        } catch (err) {
+            console.error(err);
+        };
     };
 
     return (
         <div className='new-listing'>
             <form id='new-listing-form' onSubmit={handleFormSubmit}>
                 <input 
+                    name='listing-title'
                     placeholder='Listing title...'
                     value={listingTitle}
                     onChange={handleFormChange}
                 ></input>
                 <input
+                    name='listing-value'
                     placeholder='Est. value (USD)'
                     value={listingValue}
                     onChange={handleFormChange}
                 ></input>
                 <textarea
+                    name='listing-description'
                     placeholder='Describe your gear here...'
                     value={listingDescription}
                     onChange={handleFormChange}
@@ -62,9 +112,10 @@ const NewListing = (groupName) => {
                     newListingImages.map(image => (
                         <figure key={i} className='upload-image-preview' style="width: 30%;">
                             <img src={image} style="max-height: 200px; object-fit: scale-down;"
-                                onClick={deleteUploadedImage(image)} />
+                                onClick={deleteUploadedImage(image)} alt="listing" />
                         </figure>
-                    ))}    
+                    ))}
+                    <p style='clear: both;'>Listings can include a maximum of 3 images. Click on an image thumbnail to delete it.</p>
                 </div>
                 <button type='submit'>Create New Listing</button>
             </form>

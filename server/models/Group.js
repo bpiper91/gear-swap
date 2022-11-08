@@ -37,14 +37,16 @@ const groupSchema = new Schema(
             {
                 type: Schema.Types.ObjectId,
                 ref: 'User'
-            }   
+            }
         ],
+        
         admins: [
             {
                 type: Schema.Types.ObjectId,
                 ref: 'User'
             }
         ],
+        
         activeSwaps: [
             {
                 type: Schema.Types.ObjectId,
@@ -66,7 +68,7 @@ const groupSchema = new Schema(
 );
 
 // check to see if the user has owner permissions for the group
-userSchema.methods.isOwner = async function (userId) {
+groupSchema.methods.isOwner = async function (userId) {
     const match = this.owners.filter(user => user === userId);
     if (match.length) {
         return true;
@@ -76,7 +78,7 @@ userSchema.methods.isOwner = async function (userId) {
 };
 
 // check to see if the user has admin permissions for the group
-userSchema.methods.isAdmin = async function (userId) {
+groupSchema.methods.isAdmin = async function (userId) {
     const match = this.admins.filter(user => user === userId);
     if (match.length) {
         return true;

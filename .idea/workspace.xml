@@ -5,12 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a617d3d1-9f03-4220-9a49-e41d384529c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/public/assets/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/assets/images/piano.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/utils/queries.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/CloudinaryUploadWidget.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/CloudinaryUploadWidget.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/assets/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/css/profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/utils/GlobalState.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/GlobalState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/assets/css/home.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/assets/css/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/assets/css/nomatch.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/assets/css/profile.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/assets/css/signup.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/assets/css/singlegroup.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/assets/css/singlelisting.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/assets/images/city-background.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/assets/images/city-background.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Footer/footer.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Footer/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Footer/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/GroupList/grouplist.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/GroupList/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/GroupList/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Header/header.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Header/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/ListingList/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ListingList/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/ListingList/listinglist.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/NewListing.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/NewListing.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/mutations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/Comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Comment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/Group.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Group.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/Listing.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Listing.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/Swap.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Swap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/schemas/resolvers.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/schemas/resolvers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/schemas/typeDefs.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/schemas/typeDefs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/utils/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/utils/auth.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,11 +84,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1667838871852</updated>
-      <workItem from="1667838875933" duration="2726000" />
+      <workItem from="1667838875933" duration="3350000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

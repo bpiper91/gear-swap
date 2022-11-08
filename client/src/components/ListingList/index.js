@@ -1,10 +1,15 @@
 import React from "react";
 
-// this page is using 'grouplist.css' due to same "classnames"
-
-const ListingList = () => {
+const ListingList = (listings) => {
+    if (!listings.length) {
+      return (
+        <div>
+          <h2>No Listings Yet</h2>
+        </div>
+      );
+    }
     return (
-        <main className="list-main">
+        <div className="list-main">
             <div className="listing-wrapper">
                 <div className="list-title">Gear</div>
                 <input type="search" id="gear-input" placeholder="Browse gear" className="group-input" />
@@ -15,7 +20,7 @@ const ListingList = () => {
                     <li className="list-l"><a href="/">current placeholder</a></li>
                 </ul>
             </div>
-        </main>
+        </div>
     );
 };
 

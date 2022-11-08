@@ -6,6 +6,7 @@ const userSchema = new Schema(
         firstName: {
             type: String,
             required: true,
+            unique: true,
             trim: true
         },
         lastName: {
@@ -16,6 +17,7 @@ const userSchema = new Schema(
         email: {
             type: String,
             required: true,
+            unique: true,
             match: [/.+@.+\..+/, 'Must match an email address!']
         },
         password: {
@@ -26,6 +28,12 @@ const userSchema = new Schema(
         location: {
             type: String
         },
+        groups: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Group'
+            }
+        ],
         // image: ???   | need to figure out how to implement avatar photos
         listings: [
             {

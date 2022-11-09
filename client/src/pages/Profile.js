@@ -1,7 +1,5 @@
 import React from "react";
-// import CloudinaryUploadWidget from "../CloudinaryUploadWidget";
-// <div className="" id=""></div>
-// <div className=""></div>
+
 const Profile = () => {
     return (
         <main className="profile-main">

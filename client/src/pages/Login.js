@@ -47,7 +47,7 @@ const Login = () => {
   };
 
   return (
-    <div className="login-main">
+    <main>
       <div className="login-sheet-background"></div>
       <div className="login-sheet">
         <form id='login' onSubmit={handleFormSubmit}>
@@ -72,15 +72,6 @@ const Login = () => {
               onChange={handleFormChange}
             />
           </div>
-          <div className="rem-for-flex-container">
-            <div className="checkbox-text-flex">
-              <input label="true" type="checkbox" id="rem-button" name="remember" value="remember-me" />
-              <div className="remember-me-text">Remember Me</div>
-            </div>
-            <div className="forgot-pass">
-              <Link to="/">Forgot Password</Link>
-            </div>
-          </div>
           <Link to="/profile" id="login-profile">
             <button id="login-submit" type="submit" value="Login" className="login-submit-btn">Log In</button>
           </Link>
@@ -89,8 +80,7 @@ const Login = () => {
         </form>
         {error && <p>Failed to log in user.</p>}
       </div>
-      <div className="login-copyright">@2022 Gear Swap™ All rights reserved</div>
-    </div>
+    </main>
     );
 };
 

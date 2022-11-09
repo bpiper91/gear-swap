@@ -1,4 +1,5 @@
 import React from "react";
+import CreateGroup from "../components/CreateGroup";
 
 const Profile = () => {
     return (
@@ -56,6 +57,7 @@ const Profile = () => {
                         <span className="listing-desc" id="listing-desc"></span>
                     </div>
                 </div>
+                <div><CreateGroup/></div>
             </section>        
             </main>
 

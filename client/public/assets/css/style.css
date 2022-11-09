@@ -9,13 +9,13 @@
 *{
     margin: 0;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    box-sizing: border-box;
 }
 /* Header */
 header{
     width: 100%;
-    height: 0vh;
+    height: 100%;
     background-color: dimgray;
-    
 }
 header a {
     text-decoration: none;
@@ -40,7 +40,14 @@ header a {
     font-size: 33px;
     transform: translateY(20%);
 }
-
+#logout {
+    border: none;
+    background: none;
+    margin-left: 20px;
+}
+#logout:hover{
+    color:#3256ce
+}
 .navbar-link a {
     text-decoration: none;
     margin-right: 30px;
@@ -48,8 +55,16 @@ header a {
 }
 /* Home  */
 .home-main-class{
-    background-image: url(../../assets/images/city-background.jpg);
     background-size: 100% 100%;
+    
+}
+.bg-image {
+    background-image: url(../images/violin.png);
+    filter: blur(8px);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .group-browse-container {
@@ -256,9 +271,10 @@ header a {
 /* Footer */
 .footer-main {
     width: 100%;
-    height: 8vh;
+    height: 100%;
     background-color: black;
     color: white;
+    overflow: hidden;
 }
 /* Group List */
 .grouplist-main {

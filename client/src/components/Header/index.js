@@ -27,6 +27,7 @@ const Header = () => {
           <Link to="/profile" className="navBtn">
             Profile
           </Link>
+          <button type="submit" className="navBtn" id="logout">Logout</button>
         </div>
         {/* )} */}
         </div>

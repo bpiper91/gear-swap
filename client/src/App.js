@@ -42,44 +42,29 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-
-          <div className="home-container w-100 h-100">
-            <Header />
-            <Routes>
-              <Route
-                path="/"
-                element={<Home />}
-              />
-              <Route path="/profile">
-                <Route path=":username" element={<Profile />} />
-                <Route path="" element={<Profile/>} />
-              </Route>
-              <Route
-                path="/login"
-                element={<Login />}
-              />
-              <Route
-                path="/signup"
-                element={<Signup />}
-              />
-              <Route
-                path="/g/:groupId"
-                element={<SingleGroup />}
-              />
-              <Route
-                path="/g/:groupId/l/:listingId"
-                element={<SingleListing />}
-              />
-              <Route
-                path="*"
-                element={<NoMatch />}
-              />
-            </Routes>
-          </div>
+        <div className="home-container w-100 h-100">
+          <Header />
+      <div className="bg-image"></div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/profile">
+              <Route path=":username" element={<Profile />} />
+              <Route path="" element={<Profile />} />
+            </Route>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/g/:groupId" element={<SingleGroup />} />
+            <Route
+              path="/g/:groupId/l/:listingId"
+              element={<SingleListing />}
+            />
+            <Route path="*" element={<NoMatch />} />
+          </Routes>
+        </div>
         <Footer />
       </Router>
     </ApolloProvider>
-  )
+  );
 }
 
 export default App;

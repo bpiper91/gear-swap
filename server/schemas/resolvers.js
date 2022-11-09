@@ -6,15 +6,16 @@ const resolvers = {
     Query: {
         me: async (parent, args, context) => {
             if (context.user) {
-                const userData = await User.findOne({ _id: context.user._id })
+                const token = Auth.getProfile();
+                const myId = token.data._id;
+                const userData = await User.findOne({ _id: myId })
                     .select('-__v -password')
                     .populate('groups')
                     .populate('listings')
                     .populate('activeSwaps')
                     .populate('messages');
                 return userData;
-               
-            }
+            };
 
             throw new AuthenticationError('Must be logged in to do that');
         },

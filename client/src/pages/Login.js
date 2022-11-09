@@ -65,7 +65,7 @@ const Login = () => {
             <h4 className="login-epass">* Password</h4>
             <input
               type="password"
-              name='email'
+              name='password'
               className="login-epass-input"
               placeholder="Password"
               value={formState.password}

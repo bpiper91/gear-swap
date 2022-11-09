@@ -58,7 +58,17 @@ const Signup = () => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
+        if (signupState.email === '') {
+            setEmailValidationState('Please enter an email address.');
+            return false;
+        };
+
         if (emailValidationState !== '') {
+            return false;
+        };
+
+        if (signupState.password === '') {
+            setPwValidationState('Please enter a password.');
             return false;
         };
 
@@ -67,17 +77,27 @@ const Signup = () => {
         };
 
         try {
-            console.log(signupState); // signupState is up-to-date here
-            const { data } = await createUser({
-                variables: { ...signupState }
-            });
+            console.log(signupState); // signupState is working here
 
-            console.log(data.createUser)
+            const { data } = await createUser({
+                variables: { ...signupState },
+              });
+
+            console.log(data.createUser);
 
             Auth.login(data.createUser.token);
-        } catch (e) {
-            console.error(e);
+        } catch (err) {
+            console.error(err);
         };
+
+        // clear form
+        setSignupState({
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            location: ''
+        });
     };
 
     return (

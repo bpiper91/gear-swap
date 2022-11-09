@@ -1,21 +1,20 @@
 /* HEADER - Line 12 */
 /* HOME - line 45 */
-/* LOGIN - line 60 */
+/* LOGIN/SIGNUP - line 60 */
 /* PROFILE - line 168 */
-/* SIGNUP - line 254 */
 /* FOOTER - line 260 */
 /* GROUPLIST - line 266 */
 /* LISTINGLIST - line 314 */
 *{
     margin: 0;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    box-sizing: border-box;
 }
 /* Header */
 header{
     width: 100%;
-    height: 0vh;
+    height: 100%;
     background-color: dimgray;
-    
 }
 header a {
     text-decoration: none;
@@ -40,18 +39,32 @@ header a {
     font-size: 33px;
     transform: translateY(20%);
 }
-
+#logout {
+    border: none;
+    background: none;
+    margin-left: 20px;
+}
+#logout:hover{
+    color:#3256ce
+}
 .navbar-link a {
     text-decoration: none;
     margin-right: 30px;
     color: black;
 }
 /* Home  */
-.home-main-class{
-    background-image: url(../../assets/images/city-background.jpg);
-    background-size: 100% 100%;
+main {
+    height: 100vh;
 }
-
+.bg-image {
+    background-image: url(../images/violin.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position:sticky;
+    height: 100%;
+    width: 100%
+}
 .group-browse-container {
         border: 1px solid black;
         position: absolute;
@@ -76,52 +89,37 @@ header a {
 }
 
 /* login */
-.login-main {
-    height: 100vh;
-    background-image: url(../../assets/images/city-background.jpg);
-    background-size: 100% 100%;
-}
-
-.login-sheet-background {
-    height: 60%;
-    width: 40%;
-    border: 1px solid black;
-    border-radius: 10px;
-    position: absolute;
-    transform: translate(75%, 25%);
-    background-color: white;
-    opacity: 50%;
-}
 
 .login-sheet {
-    height: 60%;
     width: 40%;
-    position: absolute;
-    transform: translate(75%, 25%);
-    border: 1px solid black;
+    position: relative;
+    background-color: rgba(255, 255, 255, .5);
     border-radius: 10px;
+    border: 1px solid black;
+    margin: auto;
+    margin-top: 30px;
+    padding: 20px;
 }
 
 .login-title {
     text-align: center;
-    padding-top: 20px;
 }
 
 #email-password-wrapper {
-    padding-top: 40px;
+    padding-top: 10px;
     transform: translateX(10%);
 }
 
 /* class for both Email and Password title texts */
 .login-epass {
-    padding-top: 20px;
+    padding-top: 10px;
     font-size: larger;
 }
 
 /* class for both Email and Password inputs */
 .login-epass-input {
     width: 80%;
-    height: 3vh;
+    height: 100%;
     border-radius: 10px;
     font-size: 18px;
 }
@@ -142,14 +140,12 @@ header a {
 }
 
 .login-submit-btn {
-    height: 4vh;
     width: 50%;
     transform: translateX(50%);
-    margin-top: 60px;
+    margin-top: 30px;
     border-radius: 40px;
     background-color: rebeccapurple;
     font-size: 18px;
-    font-weight: 500;
     cursor: pointer;
 }
 
@@ -162,17 +158,9 @@ header a {
 .register a {
     text-decoration: none;
 }
-
-.login-copyright {
-    text-align: center;
-    color: #000000;
-    padding-top: 70vh;
-
-}
 /* Profile */
 .profile-main {
     height: 100vh;
-    background-color: #b3b3b3;
 }
 
 .user-name {
@@ -255,14 +243,14 @@ header a {
     height: 26vh;
     width: 100vw;
 }
-/* Signup uses "LOGIN" css styling */
 
 /* Footer */
-.footer-main {
+footer{
     width: 100%;
-    height: 8vh;
+    height: 100%;
     background-color: black;
     color: white;
+    overflow: hidden;
 }
 /* Group List */
 .grouplist-main {

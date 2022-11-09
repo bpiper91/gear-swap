@@ -98,7 +98,6 @@ export const CREATE_GROUP = gql`
         title
         description
         value
-        creator
       }
       owners {
         _id

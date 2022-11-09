@@ -12,23 +12,26 @@ const Header = () => {
           <Link to="/">Gear Swap!</Link>
         </div>
         <div className="navBtn-wrapper">
-        {!loggedIn && (
+          {!loggedIn && (
+            <div>
+              <Link to="/signup" className="navBtn">
+                Sign Up
+              </Link>
+              <Link to="/login" className="navBtn">
+                Login
+              </Link>
+            </div>
+          )}
+          {/* {loggedIn && ( */}
           <div>
-            <Link to="/signup" className="navBtn">
-              Sign Up
+            <Link to="/profile" className="navBtn">
+              Profile
             </Link>
-            <Link to="/login" className="navBtn">
-              Login
-            </Link>
+            <button type="submit" className="navBtn" id="logout">
+              Logout
+            </button>
           </div>
-        )}
-        {/* {loggedIn && ( */}
-        <div >
-          <Link to="/profile" className="navBtn">
-            Profile
-          </Link>
-        </div>
-        {/* )} */}
+          {/* )} */}
         </div>
       </div>
     </header>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { CREATE_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
@@ -148,8 +148,8 @@ const Signup = () => {
                     />
                 </div>
                 <button id="signup-submit" type="submit" value="Sign Up" className="login-submit-btn">Create Account</button>
+                {error && <p>Failed to sign up new user.</p>}
             </form>
-            {error && <p>Failed to sign up new user.</p>}
         </main>
     )
 };

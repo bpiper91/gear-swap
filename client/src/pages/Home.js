@@ -8,7 +8,6 @@ const Home = () => {
 
   return (
     <main className='home-main-class'>
-      <div className='bg-image'></div>
       <GroupList />
       <div className="homepage vh-100">
         {loggedIn && (

@@ -42,9 +42,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="home-container w-100 h-100">
+        <div className="home-container w-100 h-100 bg-image">
           <Header />
-      <div className="bg-image"></div>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/profile">

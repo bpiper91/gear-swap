@@ -111,6 +111,7 @@ const SingleListing = () => {
 
         return (
             <main>
+                <div className="list-main">
                 <h1>{listing.title}</h1>
                 <h2>Description</h2>
                 {listing.images && listing.images.map((imageURL, index) => (
@@ -171,6 +172,7 @@ const SingleListing = () => {
                         </form>
                     </div>
                 }
+            </div>
             </main>
         );
     };

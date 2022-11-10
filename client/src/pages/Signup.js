@@ -147,7 +147,7 @@ const Signup = () => {
                         onChange={handleFormChange} 
                     />
                 </div>
-                <button id="signup-submit" type="submit" value="Sign Up" className="login-submit-btn">Create Account</button>
+                <button id="signup-submit" type="submit" value="Sign Up" className="profile-btn">Create Account</button>
                 {error && <p>Failed to sign up new user.</p>}
             </form>
         </main>

@@ -192,7 +192,7 @@ export const QUERY_LISTING = gql`
 `;
 
 export const QUERY_LISTINGS_DISPLAY = gql`
-    query ListingsDisplay($groupId: ID!) {
+    query ListingsDisplay($groupId: String!) {
         listingsDisplay(groupId: $groupId) {
             _id
             title

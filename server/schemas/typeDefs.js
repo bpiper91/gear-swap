@@ -80,7 +80,7 @@ const typeDefs = gql`
         groups: [Group]
         groupsPublic: [Group]
         listing(_id: ID!): Listing
-        listingsDisplay(groupId: ID!): [Listing]
+        listingsDisplay(groupId: String!): [Listing]
         swap(_id: ID!, groupName: String!): Swap
         message(_id: ID!, groupName: String): Message
     }

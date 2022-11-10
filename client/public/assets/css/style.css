@@ -195,10 +195,26 @@ main {
     width: 25%;
     height: fit-content;
     border-radius: 10px;
-    background-color: rebeccapurple;
+    background-color: black;
     font-size: 18px;
     cursor: pointer;
     margin: 10px;
+    color: white;
+}
+.profile-btn-link {
+    height: fit-content;
+    border-radius: 10px;
+    background-color: black;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 10px;
+    color: white;
+    text-decoration: none;
+    padding: 4px 16px;
+    border: 2px solid black;
+}
+.profile-btn-link:hover {
+    color: white;
 }
 /* Footer */
 footer{

@@ -8,8 +8,9 @@ import Login from "./pages/Login";
 import Signup from './pages/Signup'
 import Profile from './pages/Profile';
 import SingleGroup from './pages/SingleGroup';
-import SingleListing from './pages/SingleListing'
-import NoMatch from './pages/NoMatch'
+import SingleListing from './pages/SingleListing';
+import NewListing from './pages/NewListing';
+import NoMatch from './pages/NoMatch';
 
 import {
   ApolloClient,
@@ -18,6 +19,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import { ListingProvider, useNewListingContext } from './utils/GlobalState';
 
 const httpLink = createHttpLink({
   uri: "/graphql"
@@ -41,6 +43,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+      <ListingProvider>
       <Router>
         <div className="home-container w-100 h-100 bg-image">
           <Header />
@@ -52,6 +55,7 @@ function App() {
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/nl/:groupId" element={<NewListing />} />
             <Route path="/g/:groupId" element={<SingleGroup />} />
             <Route
               path="/g/:groupId/l/:listingId"
@@ -62,6 +66,7 @@ function App() {
         </div>
         <Footer />
       </Router>
+      </ListingProvider>
     </ApolloProvider>
   );
 }

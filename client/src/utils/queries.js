@@ -11,6 +11,7 @@ export const QUERY_ME = gql`
             groups {
                 _id
                 groupName
+                description
             }
             listings {
                 _id
@@ -42,6 +43,7 @@ export const QUERY_USER = gql`
             groups {
                 _id
                 groupName
+                description
             }
             listings {
                 _id
@@ -49,6 +51,9 @@ export const QUERY_USER = gql`
                 description
                 value
                 images
+            }
+            activeSwaps {
+                _id
             }
             completedSwaps
         }
@@ -81,8 +86,8 @@ export const QUERY_USERS = gql`
 `;
 
 export const QUERY_GROUP = gql`
-    query Group($id: ID!) {
-        group(_id: $id) {
+    query Group($_id: ID!) {
+        group(_id: $_id) {
             _id
             groupName
             description

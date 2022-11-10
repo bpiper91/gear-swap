@@ -55,8 +55,8 @@ export const UPDATE_USER = gql`
 `;
 
 export const UPDATE_USER_GROUPS = gql`
-  mutation UpdateUserGroups($id: ID, $groups: String, $removeGroups: String) {
-    updateUserGroups(_id: $id, groups: $groups, removeGroups: $removeGroups) {
+  mutation UpdateUserGroups($_id: ID, $groups: String, $removeGroups: String) {
+    updateUserGroups(_id: $_id, groups: $groups, removeGroups: $removeGroups) {
       _id
       firstName
       lastName
@@ -181,23 +181,15 @@ export const DELETE_GROUP = gql`
 `;
 
 export const CREATE_LISTING = gql`
-  mutation CreateListing(
-    $title: String!
-    $groupId: String!
-    $description: String
-    $value: Int
-  ) {
-    createListing(
-      title: $title
-      group: $group
-      description: $description
-      value: $value
-    ) {
+  mutation CreateListing($title: String!, $group: ID!, $creator: ID!, $description: String, $value: Int) {
+    createListing(title: $title, group: $group, creator: $creator, description: $description, value: $value) {
+      _id
       title
-      description
       value
-      creator
-      group
+      description
+      creator {
+        _id
+      }
       images
     }
   }

@@ -6,9 +6,9 @@ const resolvers = {
     Query: {
         me: async (parent, args, context) => {
             if (context.user) {
-                const token = Auth.getProfile();
-                const myId = token.data._id;
-                const userData = await User.findOne({ _id: myId })
+                // const token = Auth.getProfile();
+                // const myId = token.data._id;
+                const userData = await User.findOne({ _id: context.user._id })
                     .select('-__v -password')
                     .populate('groups')
                     .populate('listings')
@@ -29,8 +29,8 @@ const resolvers = {
             return User.find()
                 .select('-__v, -password');
         },
-        group: async (parent, {_id }) => {
-            return Group.findOne({_id })
+        group: async (parent, { _id }) => {
+            return Group.findOne({ _id })
                 .populate('listings')
                 .populate('owners')
                 .populate('users');
@@ -151,7 +151,7 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
         updateUserGroups: async (parent, args, context) => {
-            if (context.user) {
+            // if (context.user) {
                 let userId;
 
                     if (args._id) {
@@ -190,9 +190,9 @@ const resolvers = {
 
                     return updateUser;
                 };
-            };
+            // };
 
-            throw new AuthenticationError('You need to be logged in!');
+            // throw new AuthenticationError('You need to be logged in!');
         },
         deleteUser: async (parent, { _id }, context) => {
             if (context.user) {
@@ -451,13 +451,17 @@ const resolvers = {
 
                 throw new AuthenticationError('You need to be logged in!');
         },
-        createListing: async (parent, args, context) => {
-            if (context.user) {
-                const listing = await Listing.create({ ...args, creator: context.user._id });
+        createListing: async (parent, args) => {
+                const {
+                    title, group, creator, description, value
+                } = args;
+
+            // if (context.user) {
+                const listing = await Listing.create({ title, group, creator, description, value });
                 //const listing = await Listing.create({ ...args, creator: "6365afef10f1dc4557021a8e" }); // for testing
 
                 await User.findByIdAndUpdate(
-                    { _id: context.user._id },
+                    { _id: args.creator },
                     //{ _id: "6365afef10f1dc4557021a8e"}, // for testing
                     { $push: { listings: listing._id } },
                     { new: true }
@@ -470,9 +474,9 @@ const resolvers = {
                 );
 
                 return listing;
-            };
+            // };
 
-            throw new AuthenticationError('Must be logged in to do that');
+            // throw new AuthenticationError('Must be logged in to do that');
         },
         deleteListing: async (parent, {_id}, context) => {
             if (context.user) {

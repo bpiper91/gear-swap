@@ -272,7 +272,6 @@ ul {
 }
 
 .listing-wrapper {
-    width: 300px;
     overflow-y: hidden;
     overflow-x: hidden;
     height: 40vh;

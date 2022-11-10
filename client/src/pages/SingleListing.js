@@ -97,7 +97,7 @@ const SingleListing = () => {
         let userListings = [
             {
                 _id: '11111',
-                title: 'Epiphone Les Paul Studio'
+                title: 'PRS SE Custom 24 w/ PRS gig bag'
             },
             {
                 _id: '11112',
@@ -106,6 +106,10 @@ const SingleListing = () => {
             {
                 _id: '11113',
                 title: 'Yamaha Acoustic Guitar with Case'
+            },
+            {
+                _id: '11114',
+                title: 'Boss NS-2 Noise Suppressor pedal'
             }
         ];
 
@@ -133,15 +137,15 @@ const SingleListing = () => {
                 <p>
                     Listed by {firstName} {lastName.charAt(0).toUpperCase()}.
                 </p>
-                <p>
+                <button className="profile-btn">
                     Message {firstName}
-                </p>
-                <p>
+                </button>
+                <button className="profile-btn">
                     See all of {firstName}'s listings
 
-                </p>
+                </button>
                 { }
-                {swapOffered === false && <button id="swap-button" onClick={offerSwap}>
+                {swapOffered === false && <button id="swap-button" className="profile-btn" onClick={offerSwap}>
                     OFFER A SWAP
                 </button>}
                 {swapOffered &&
@@ -168,7 +172,7 @@ const SingleListing = () => {
                                 placeholder="Enter a number in USD" //value={swapState.responderCash}
                             //onChange={handleFormChange}
                             /><br />
-                            <button type="submit">Submit Swap Offer to {firstName}</button>
+                            <button type="submit" className="profile-btn">Submit Swap Offer to {firstName}</button>
                         </form>
                     </div>
                 }

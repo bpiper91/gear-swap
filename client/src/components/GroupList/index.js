@@ -10,7 +10,7 @@ const GroupList = () => {
 
   let noGroups = false;
 
-  if (data && data.groupsPublic.length == 0) {
+  if (data && data.groupsPublic.length === 0) {
     noGroups = true;
   };
 
@@ -18,7 +18,6 @@ const GroupList = () => {
     <div className="grouplist-main">
       <div className="list-wrapper">
         <h2 className="group-list-title">Groups</h2>
-        <input type="search" id="group-input" placeholder="Browse groups" className="group-input" />
         <ul className="grouplist-list">
           {loading && <li><h2>Loading Groups</h2></li>}
           {data &&

@@ -4,6 +4,10 @@ import Auth from "../../utils/auth";
 
 const Header = () => {
   const loggedIn = Auth.loggedIn();
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
 
   return (
     <header>
@@ -23,14 +27,19 @@ const Header = () => {
             </div>
           )}
           {loggedIn && (
-          <div>
-            <Link to="/profile" className="navBtn">
-              Profile
-            </Link>
-            <button type="submit" className="navBtn" id="logout">
-              Logout
-            </button>
-          </div>
+            <div>
+              <Link to="/profile" className="navBtn">
+                Profile
+              </Link>
+              <button
+                type="submit"
+                className="navBtn"
+                id="logout"
+                onClick={logout}
+              >
+                Logout
+              </button>
+            </div>
           )}
         </div>
       </div>

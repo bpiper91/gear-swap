@@ -1,31 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import CloudinaryUploadWidget from "../CloudinaryUploadWidget";
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { CREATE_LISTING } from '../utils/mutations';
-import { useNewListingContext } from './utils/GlobalState';
-import { UPDATE_NEW_LISTING_IMAGES } from './utils/actions';
+// import { ListingProvider, useNewListingContext } from '../utils/GlobalState';
+// import { UPDATE_NEW_LISTING_IMAGES } from '../utils/actions';
+import { useParams, useNavigate } from 'react-router-dom';
+import Auth from '../utils/auth';
 
-const NewListing = (groupId) => {
+const NewListing = () => {
+    const { groupId } = useParams();
+
+    let navigate = useNavigate();
+
     // use CREATE_LISTING mutation as createListing
-    const [createListing, { data }] = useMutation(CREATE_LISTING);
-    
-    // use global state for listing upload image URLs
-    const [state, dispatch] = useNewListingContext();
-    const { newListingImages } = state;
+    const [createListing, { data: createListingData }] = useMutation(CREATE_LISTING);
+
+    // // use state for upload image URLs
+    // const [listingImages, setListingImages] = useState([]);
+    // const widgetToNewListing = () => {
+
+    // };
 
     // use local state for listing title, description, and value
     const [listingTitle, setListingTitle] = useState('');
     const [listingDescription, setListingDescription] = useState('');
     const [listingValue, setListingValue] = useState('');
 
-    // when an image is clicked, delete it from the newListingImages array in global state
-    const deleteUploadedImage = (imageURL) => {
-        const updatedListingImages = newListingImages.filter(image => image !== imageURL);
-        dispatch({
-            type: UPDATE_NEW_LISTING_IMAGES,
-            newListingImages: updatedListingImages
-        });
-    };
+    // // when an image is clicked, delete it from the newListingImages array in global state
+    // const deleteUploadedImage = (imageURL) => {
+    //     const updatedListingImages = newListingImages.filter(image => image !== imageURL);
+    //     // dispatch({
+    //     //     type: UPDATE_NEW_LISTING_IMAGES,
+    //     //     newListingImages: updatedListingImages
+    //     // });
+
+    //     setListingImages(updatedListingImages);
+    // };
 
     // when the form changes, update state
     const handleFormChange = (event) => {
@@ -42,7 +52,11 @@ const NewListing = (groupId) => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
-        if (!context.user) {
+        const token = Auth.getProfile();
+        console.log('token: ')
+        console.log(token)
+
+        if (!token) {
             console.error('Must be logged in to do that');
             return false;
         } else if (listingTitle === '') {
@@ -50,34 +64,49 @@ const NewListing = (groupId) => {
             return false;
         };
 
-        let variables = {
+        let listingVariables = {
             title: listingTitle,
-            groupId: groupId
+            group: groupId,
+            creator: token.data._id,
+            description: listingDescription,
+            value: parseInt(listingValue)
         };
 
-        if (listingDescription !== '') {
-            variables = {...variables, description: listingDescription};
-        };
+        // if (listingDescription !== '') {
+        //     listingVariables = {...listingVariables, description: listingDescription};
+        // };
 
-        if (listingValue !== '') {
-            variables = {...variables, value: listingValue};
-        };
+        // if (listingValue !== '') {
+        //     listingVariables = {...listingVariables, value: parseInt(listingValue)};
+        // };
 
-        if (newListingImages.length > 0) {
-            variables = {...variables, images: newListingImages};
-        };
+        console.log('listingVariables')
+        console.log(listingVariables)
+
+        // if (newListingImages.length > 0) {
+        //     variables = {...variables, images: state.listingImages};
+        // };
+
+        // if (document.getElementById('upload-img-1').src !== )
 
         try {
-            await createListing({ variables });
-
-            // reset form fields and images
-            setListingTitle('');
-            setListingDescription('');
-            setListingValue('');
-            dispatch({
-                type: UPDATE_NEW_LISTING_IMAGES,
-                newListingImages: []
+            const createListingData = await createListing({ 
+                variables: listingVariables
             });
+
+            console.log('created listing: ')
+            console.log(createListingData)
+            // reset form fields and images
+            // setListingTitle('');
+            // setListingDescription('');
+            // setListingValue('');
+            // dispatch({
+            //     type: UPDATE_NEW_LISTING_IMAGES,
+            //     newListingImages: []
+            // });
+
+            // load group page
+            navigate(`/g/${groupId}`);
 
         } catch (err) {
             console.error(err);
@@ -85,9 +114,11 @@ const NewListing = (groupId) => {
     };
 
     return (
+        <main>
         <div className='new-listing'>
+            <h2>Create a New Listing</h2>
             <form id='new-listing-form' onSubmit={handleFormSubmit}>
-                <label for='listing-title'>Title: </label>
+                <p>Title:</p>
                 <input 
                     name='listing-title'
                     id='listing-title'
@@ -95,7 +126,7 @@ const NewListing = (groupId) => {
                     value={listingTitle}
                     onChange={handleFormChange}
                 ></input>
-                <label for='listing-value'>Est. Value: </label>
+                <p>Est. Value: </p>
                 <input
                     name='listing-value'
                     id='listing-value'
@@ -103,30 +134,20 @@ const NewListing = (groupId) => {
                     value={listingValue}
                     onChange={handleFormChange}
                 ></input>
-                <label for='listing-description'>Description: </label>
+                <p>Description: </p>
                 <textarea
                     name='listing-description'
                     id='listing-description'
                     placeholder='Describe your gear here...'
                     value={listingDescription}
                     onChange={handleFormChange}
-                ></textarea>
-                <p>Image Upload:</p>
-                <CloudinaryUploadWidget />
-                <p>Image Upload Preview: </p>
-                <div className='upload-images' style="width: 90%; margin-right: auto; margin-left: auto;">
-                    {newListingImages && 
-                    newListingImages.map(image => (
-                        <figure key={i} className='upload-image-preview' style="width: 30%;">
-                            <img src={image} style="max-height: 200px; object-fit: scale-down;"
-                                onClick={deleteUploadedImage(image)} alt="listing" />
-                        </figure>
-                    ))}
-                    <p style='clear: both;'>Listings can include a maximum of 3 images. Click on an image thumbnail to delete it.</p>
-                </div>
+                ></textarea><br />
+                {/* <p>Image Upload:</p>
+                <CloudinaryUploadWidget /> */}
                 <button type='submit' id='new-listing-btn' value='create-listing'>Create New Listing</button>
             </form>
         </div>
+        </main>
     );
 };
 

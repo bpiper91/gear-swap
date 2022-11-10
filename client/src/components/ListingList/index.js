@@ -9,13 +9,17 @@ const ListingList = () => {
 
   let noListings = false;
 
-  const { loading, data } = useQuery(QUERY_LISTINGS_DISPLAY, {
+  const { loading: loadingListings, data: listingsData } = useQuery(QUERY_LISTINGS_DISPLAY, {
     variables: { groupId: groupId }
   });
 
-  if (data && data.listingsDisplay.length === 0) {
+  if (listingsData && listingsData.listingsDisplay.length === 0) {
     noListings = true;
   };
+
+  // if (listingsData) {
+  //   console.log(listingsData)
+  // }
 
   // listings query returns title, description, value, creator (firstName, lastName, location, completedSwaps), and images array
   // we can use any combination of those properties
@@ -26,10 +30,10 @@ const ListingList = () => {
         <div className="list-title">Available Gear</div>
         <input type="search" id="gear-input" placeholder="Browse gear" className="group-input" />
         <ul className="list-list">
-          {loading && <li><h2>Loading Listings</h2></li>}
+          {loadingListings && <li><h2>Loading Listings</h2></li>}
           {noListings && <li><h2>No Listings Found.</h2></li>}
-          {data && 
-            data.listingsDisplay.map(listing => (
+          {listingsData && 
+            listingsData.listingsDisplay.map(listing => (
               <li key={listing._id}>
                 <h2>
                   <Link to={`/g/${groupId}/l/${listing._id}`}>

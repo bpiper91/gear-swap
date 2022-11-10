@@ -81,8 +81,8 @@ export const QUERY_USERS = gql`
 `;
 
 export const QUERY_GROUP = gql`
-    query Group($id: ID!) {
-        group(_id: $id) {
+    query Group($_id: ID!) {
+        group(_id: $_id) {
             _id
             groupName
             description

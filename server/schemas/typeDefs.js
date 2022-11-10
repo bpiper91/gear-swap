@@ -95,7 +95,7 @@ const typeDefs = gql`
         updateGroup(_id: ID!, groupName: String, description: String, location: String, isPublic: Boolean, listings: [String], users: [String], owners: [String], admins: [String], activeSwaps: [String], messages: [String]): Group
         addToGroup(_id: ID!, listings: [String], users: [String], owners: [String], admins: [String], activeSwaps: [String], messages: [String]): Group
         deleteGroup(_id: ID!): Group
-        createListing(title: String!, description: String, value: Int, images: [String], group: ID!): Listing
+        createListing(title: String!, description: String, value: Int, images: [String], group: ID!, creator: ID!): Listing
         deleteListing(_id: ID!): Listing
         createSwap(proposerListings: [String], proposerCash: Int, responder: String!, responderListings: [String], responderCash: Int, groupId: ID!): Swap
         updateSwap(_id: ID!, isActive: Boolean, isCompleted: Boolean, response: String): Swap

@@ -5,42 +5,52 @@ import { UPDATE_USER_GROUPS } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { useParams } from 'react-router-dom';
 import ListingList from "../components/ListingList";
+import { Link } from "react-router-dom";
 
 const SingleGroup = () => {
     const { groupId } = useParams();
 
-    const { loading: loadingGroup, data: group } = useQuery(QUERY_GROUP);
+    const { loading: singleGroupLoading, data: singleGroupData } = useQuery(QUERY_GROUP, {
+        variables: { _id: groupId }
+    });
     //const { loading: loadingListings, data: listingsData } = useQuery(QUERY_LISTINGS_DISPLAY);
     const [updateUserGroup] = useMutation(UPDATE_USER_GROUPS);
 
-    let showJoinButton = true;
-    let notInGroup = true;
+    // let showJoinButton = true;
+    // let notInGroup = true;
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-    if (group) {
-        if (!token) {
-            // if the user isn't logged in, don't show the join button
-            showJoinButton = false;
-        } else {
-            // check to see if current user is a member of the group
-            console.log(Auth.getProfile());
-            const userData = Auth.getProfile();
-            const userMatch = group.users.map(user => user === userData._id);
-            userMatch.length > 0 ? notInGroup = false : notInGroup = true;
-        };
-    };
+    // if (singleGroupData) {
+    //     if (!token) {
+    //         // if the user isn't logged in, don't show the join button
+    //         showJoinButton = false;
+    //     } else {
+    //         // check to see if current user is a member of the group
+    //         // const userData = Auth.getProfile();
+    //         // const userMatch = singleGroupData.group.users.map(user => user === userData._id);
+    //         // userMatch.length > 0 ? notInGroup = false : notInGroup = true;
+    //     };
+    // };
 
+    const userData = Auth.getProfile();
+    console.log(userData)
 
     // add user to group
     const joinGroup = async (event) => {
         event.preventDefault();
 
         try {
-            const { data } = await updateUserGroup({
+            const userUpdate = await updateUserGroup({
                 variables: {
-                    groups: groupId
+                    groups: groupId,
+                    userId: userData.data._id
                 }
             });
+
+            console.log(userUpdate)
+
+            document.getElementById('join-group').setAttribute('value', 'Joined Group');
+
         } catch (err) {
             console.error(err);
         };
@@ -48,21 +58,21 @@ const SingleGroup = () => {
 
     return (
         <main>
-            {loadingGroup &&
+           { singleGroupLoading &&
                 <div className="group-info">
                     <h1>Loading Group</h1>
                 </div>}
-            {group &&
+            { singleGroupData &&
                 <div>
-                    <h1>{group.groupName}</h1>
-                    <p>{group.location}</p>
-                    <p>{group.description}</p>
-                    {showJoinButton && notInGroup &&
-                        <button onClick={joinGroup} id='join-group'>Join Group</button>}
-                    {showJoinButton == false && <p>Create an account or log in to join this group.</p>}
-                    {showJoinButton && notInGroup == false && <p>You are a member of this group.</p>}
+                    <h1>{singleGroupData.group.groupName}</h1>
+                    <p>{singleGroupData.group.location}</p>
+                    <p>{singleGroupData.group.description}</p>
+                    <button onClick={joinGroup} id='join-group'>Join Group</button>
+                    <Link to={`/nl/${groupId}`}>
+                        Create a New Listing in this Group
+                    </Link>
                 </div>}
-            <ListingList groupId={groupId} />
+            <ListingList  />
         </main>
     )
 };

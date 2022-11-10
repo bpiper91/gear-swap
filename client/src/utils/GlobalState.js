@@ -12,10 +12,10 @@ const ListingProvider = ({ value = [], ...props }) => {
     return <Provider value={[state, dispatch]} {...props} />
 };
 
-// const useNewListingContext = () => {
-//     return useContext(NewListingContext);
-// };
+const useNewListingContext = () => {
+    return useContext(NewListingContext);
+};
 
 // export { ListingProvider, useStoreContext };
 
-export { ListingProvider };
+export { ListingProvider, useNewListingContext };

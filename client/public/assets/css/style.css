@@ -5,6 +5,11 @@
 /* FOOTER - line 260 */
 /* GROUPLIST - line 266 */
 /* LISTINGLIST - line 314 */
+:root {
+    --primary: #d3d4d9;
+    --secondary: #6c644c;
+    --tertiary: #afbedc;
+}
 *{
     margin: 0;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -14,7 +19,8 @@
 header{
     width: 100%;
     height: 100%;
-    background-color: dimgray;
+    background-color: var(--primary);
+    border-bottom: solid 1px #000000;
 }
 header a {
     text-decoration: none;
@@ -44,13 +50,21 @@ header a {
     background: none;
     margin-left: 20px;
 }
-#logout:hover{
-    color:#3256ce
+.navBtn{
+    padding: 10px;
+}
+#logout:hover, .navBtn:hover{
+    background-color: var(--tertiary);
+    color: var(--secondary);
+    border-radius: 10px;
 }
 .navbar-link a {
     text-decoration: none;
     margin-right: 30px;
     color: black;
+}
+.swap-img{
+    max-width:7vw;
 }
 /* Home  */
 main {
@@ -90,7 +104,7 @@ main {
 
 /* login */
 
-.login-sheet {
+.login-sheet, .list-main, .grouplist-main {
     width: 40%;
     position: relative;
     background-color: rgba(255, 255, 255, .5);
@@ -99,6 +113,9 @@ main {
     margin: auto;
     margin-top: 30px;
     padding: 20px;
+}
+.grouplist-main {
+    width: 100%;
 }
 
 .login-title {
@@ -117,7 +134,7 @@ main {
 }
 
 /* class for both Email and Password inputs */
-.login-epass-input {
+.epass-input {
     width: 80%;
     height: 100%;
     border-radius: 10px;
@@ -139,7 +156,7 @@ main {
     justify-content: space-between;
 }
 
-.login-submit-btn {
+.submit-btn {
     width: 50%;
     transform: translateX(50%);
     margin-top: 30px;
@@ -159,113 +176,45 @@ main {
     text-decoration: none;
 }
 /* Profile */
-.profile-main {
-    height: 100vh;
-}
-
-.user-name {
-    text-align: center;
-    font-size: 40px;
-}
-
-.user-groups-container {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 8vh;
-    height: 66vh;
+.profile{
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 1vw;
     border: 1px solid black;
-    width: 250px;
-}
-
-.user-groups {
-    height: 30vh;
-    width: 250px;
-    border: 1px solid red;
-    overflow-y: hidden;
-    overflow-x: hidden;
-}
-
-.user-groups:hover {
-    overflow: scroll;
-    overflow-x: hidden;
-}
-
-.user-groups ul {
-    list-style-type: none;
-    margin-left: -20px;
-    margin-top: 20px;
-}
-
-.user-groups-title {
-    text-align: center;
-    font-size: 20px;
-    margin-top: 15px;
-}
-
-.user-group-list a,
-.user-group-list {
-    font-size: 18px;
-    text-decoration: none;
-    margin-top: 5px;
-}
-
-.user-messages-container {
-    border: 1px solid green;
-    height: 36vh;
-}
-
-.user-messages-title {
-    text-align: center;
-    font-size: 20px;
-    margin-top: 15px;
-}
-
-.user-messages-list-cont ul {
-    list-style-type: none;
-    margin-left: -20px;
-    margin-top: 20px;
-}
-
-.user-message {
+    border-radius: 10px;
+    background-color: var(--tertiary);
     display: flex;
-    flex-direction: column;
+}
+.profile-pic, .profile-info{
+    flex:1;
+}
+.profile-pic {
+    max-width: 20%;
+}
+.profile-btn {
+    width: 25%;
+    height: fit-content;
+    border-radius: 10px;
+    background-color: rebeccapurple;
     font-size: 18px;
-    text-decoration: none;
-    margin-top: 5px;
+    cursor: pointer;
+    margin: 10px;
 }
-
-.active-listings-container {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    border: 1px solid blue;
-    height: 26vh;
-    width: 100vw;
-}
-
 /* Footer */
 footer{
     width: 100%;
     height: 100%;
-    background-color: black;
-    color: white;
+    background-color: var(--secondary);
+    color: var(--primary);
     overflow: hidden;
 }
 /* Group List */
-.grouplist-main {
-    height: 40vh;
-    position: absolute;
-    top: 15vh;
-    z-index: 1;
-    background-color: #aeaeae;
-    border-bottom: 1px solid black;
+.grouplist-main, .list-main {
+    background-color: var(--tertiary);
 }
 
 .group-list-title {
     text-align: center;
-    margin-top: 20px;
-    font-size: 30px;
 }
 
 /* controls search input in GroupList and ListingList index files */
@@ -289,28 +238,14 @@ ul {
     color: #152f84;
     margin-top: 8px;
 }
-.list-wrapper {
-    width: 300px;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    height: 40vh;
-}
+
 .list-wrapper:hover {
     overflow: scroll;
     overflow-x: hidden;
 }
 /* Listing List */
-.list-main {
-    height: 40vh;
-    position: absolute;
-    bottom: 5vh;
-    z-index: 1;
-    background-color: #aeaeae;
-    border-top: 1px solid black;
-}
 
 .list-title {
-    text-align: center;
     font-size: 30px;
 }
 

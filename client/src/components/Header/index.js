@@ -4,12 +4,17 @@ import Auth from "../../utils/auth";
 
 const Header = () => {
   const loggedIn = Auth.loggedIn();
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
 
   return (
     <header>
       <div className="header-wrapper">
         <div className="header-name">
-          <Link to="/">Gear Swap!</Link>
+          <Link className ="navBtn" to="/">Gear Swap!</Link>
+          <img className="swap-img" src="/assets/images/swap.png" alt="swap arrows"></img>
         </div>
         <div className="navBtn-wrapper">
           {!loggedIn && (
@@ -23,14 +28,19 @@ const Header = () => {
             </div>
           )}
           {loggedIn && (
-          <div>
-            <Link to="/profile" className="navBtn">
-              Profile
-            </Link>
-            <button type="submit" className="navBtn" id="logout">
-              Logout
-            </button>
-          </div>
+            <div>
+              <Link to="/profile" className="navBtn">
+                Profile
+              </Link>
+              <button
+                type="submit"
+                className="navBtn"
+                id="logout"
+                onClick={logout}
+              >
+                Logout
+              </button>
+            </div>
           )}
         </div>
       </div>

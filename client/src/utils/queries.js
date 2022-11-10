@@ -11,6 +11,7 @@ export const QUERY_ME = gql`
             groups {
                 _id
                 groupName
+                description
             }
             listings {
                 _id
@@ -42,6 +43,7 @@ export const QUERY_USER = gql`
             groups {
                 _id
                 groupName
+                description
             }
             listings {
                 _id
@@ -49,6 +51,9 @@ export const QUERY_USER = gql`
                 description
                 value
                 images
+            }
+            activeSwaps {
+                _id
             }
             completedSwaps
         }

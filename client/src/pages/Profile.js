@@ -1,65 +1,69 @@
 import React from "react";
-import CreateGroup from "../components/CreateGroup";
+import { Navigate, useParams } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { useQuery, useMutation } from '@apollo/client';
+import Auth from '../utils/auth';
+import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
 const Profile = () => {
+    const { userId: userParam } = useParams();
+    const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+        variables: { userId: userParam }
+      });
+
+    if (loading) {
+        return <div>Loading...</div>;
+      };
+
+    console.log(data)
+
+    const user = data?.me || data?.user || {};
+
+    console.log(user.groups)
+
+  
+
     return (
-        <main className="profile-main">
-            <div className="user-name" id="user-name">
-            <span id="upload-widget-btn"></span>
-            </div>
-            <div className="user-groups-container" id="user-groups-container">
-                
-                {/* NEED: display users groups in user-group-list */}
-                
-                <div className="user-groups" id="user-groups">
-                    <div className="user-groups-title">Your Groups</div>
-                    <ul className="user-groups-list">
-                        <li className="user-group-list"><a href="/"><span id="user-group-list"></span></a></li>
-                        {/* delete following placeholders when inputs display */}
-                        <li className="user-group-list"><a href="/">current placeholder</a></li>
-                        <li className="user-group-list"><a href="/">current placeholder</a></li>
-                        <li className="user-group-list"><a href="/">current placeholder</a></li>
-                        <li className="user-group-list"><a href="/">current placeholder</a></li>
-                        <li className="user-group-list"><a href="/">current placeholder</a></li>
-                        <li className="user-group-list"><a href="/">current placeholder</a></li>
-                        <li className="user-group-list"><a href="/">current placeholder</a></li>
+        <main>
+            {/* NEED: Pull in Name and Message to display on list */}
+            <div className="profile">
+                <img className="profile-pic" src="/assets/images/defaultprofile.png" alt="profile pic"></img>
+                <div className="profile-info">
+                    <ul>
+                        <li>Name: {user.firstName} {user.lastName}</li>
+                        <li>Location: {user.location ? `${user.location}` : `No location provided`} </li>
+                        {/* <li>Groups: NumberGroups</li> */}
+                        <li>Active Listings: {user.listings.length} listings  </li>
+                        <li>Open Swaps: {user.activeSwaps.length} swaps </li>
                     </ul>
+                    <button className="profile-btn">Create a New Listing</button>
+                    <button className="profile-btn">Create a New Swap</button>
                 </div>
                 
-                {/* NEED: Pull in Name and Message to display on list */}
-                {/* NEED: Get new user-message <li> element to display upon being submitted */}
-                
-                <div className="user-messages-container" id="user-messages-container">
-                    <div className="user-messages-title">Your Messages</div>
-                    <div className="user-messages-list-cont" id="user-messages-lsit-cont">
-                        <ul className="user-messages-list" id="user-messages-list">
 
-                            <li className="user-message">
-                                <span id="message-users-name">From: hank</span>
-                                <span id="message-users-message">I wanna buy your stuff</span>
-                            </li>
-                            {/* delete following placeholders when inputs display */}
-                            <li className="user-message"> Name:"" Message:""</li>
-                            <li className="user-message"> Name:"" Message:""</li>
-                            <li className="user-message"> Name:"" Message:""</li>
-                        </ul>
-                    </div>
-                </div>
             </div>
-
-
-            <section className="active-listings-container">
-                <div className="photo-desc-wrapper">
-                    <div className="listing-photo" id="listing-photo">
-                        <span className="listing-photo" id="listing-photo"></span>
-                    </div>
-                    <div className="listing-desc" id="listing-desc">
-                        <span className="listing-desc" id="listing-desc"></span>
-                    </div>
+            <div  className="profile">
+                {user.groups.length ? 
+                  
+                  <ul className="grouplist-list">
+                  <h2>{user.firstName}'s Groups</h2>
+                    {user.groups.length > 0  &&
+                        user.groups.map(group => (
+                        <li key={group._id}>
+                            <h2>
+                            <Link to={`/g/${group._id}`}>
+                                {group.groupName}
+                            </Link>
+                            </h2>
+                            <p>
+                            {group.description}
+                            </p>
+                        </li>
+                        ))}
+                    </ul> 
+                    : `${user.firstName} has no groups` }
                 </div>
-                <div><CreateGroup/></div>
-            </section>        
-            </main>
+        </main>
 
     )
 };

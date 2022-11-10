@@ -108,7 +108,7 @@ const Signup = () => {
                     <h4 className="login-epass">* First Name</h4>
                     <input 
                         name="firstname" 
-                        className="login-epass-input" 
+                        className="epass-input" 
                         placeholder="First Name" 
                         value={signupState.firstName}
                         onChange={handleFormChange} 
@@ -116,7 +116,7 @@ const Signup = () => {
                     <h4 className="login-epass">* Last Name</h4>
                     <input 
                         name="lastname" 
-                        className="login-epass-input" 
+                        className="epass-input" 
                         placeholder="Last Name" 
                         value={signupState.lastName}
                         onChange={handleFormChange} 
@@ -124,7 +124,7 @@ const Signup = () => {
                     <h4 className="login-epass">* Email{emailValidationState !== '' && `   ${emailValidationState}`}</h4>
                     <input 
                         name="email" 
-                        className="login-epass-input" 
+                        className="epass-input" 
                         placeholder="Email Address"
                         value={signupState.email} 
                         onChange={handleFormChange} 
@@ -133,7 +133,7 @@ const Signup = () => {
                     <input 
                         type="password"
                         name="password" 
-                        className="login-epass-input" 
+                        className="epass-input" 
                         placeholder="Password" 
                         value={signupState.password}
                         onChange={handleFormChange} 
@@ -141,7 +141,7 @@ const Signup = () => {
                     <h4 className="login-epass">Location</h4>
                     <input 
                         name="location" 
-                        className="login-epass-input" 
+                        className="epass-input" 
                         placeholder="Location" 
                         value={signupState.location}
                         onChange={handleFormChange} 

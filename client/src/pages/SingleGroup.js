@@ -1,5 +1,5 @@
 import React from "react";
-import { gql, useQuery, useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_GROUP } from '../utils/queries';
 import { UPDATE_USER_GROUPS } from '../utils/mutations';
 import Auth from '../utils/auth';

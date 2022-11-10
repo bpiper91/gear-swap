@@ -6,9 +6,9 @@ const resolvers = {
     Query: {
         me: async (parent, args, context) => {
             if (context.user) {
-                const token = Auth.getProfile();
-                const myId = token.data._id;
-                const userData = await User.findOne({ _id: myId })
+                // const token = Auth.getProfile();
+                // const myId = token.data._id;
+                const userData = await User.findOne({ _id: context.user._id })
                     .select('-__v -password')
                     .populate('groups')
                     .populate('listings')

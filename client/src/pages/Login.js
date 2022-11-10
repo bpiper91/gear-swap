@@ -57,23 +57,23 @@ const Login = () => {
             <input
               type="email"
               name='email'
-              className="login-epass-input"
+              className="epass-input"
               placeholder="Email Address"
               value={formState.email}
               onChange={handleFormChange}
             />
-            <h4 className="login-epass">* Password</h4>
+            <h4 className="epass">* Password</h4>
             <input
               type="password"
               name='password'
-              className="login-epass-input"
+              className="epass-input"
               placeholder="Password"
               value={formState.password}
               onChange={handleFormChange}
             />
           </div>
           <Link to="/profile" id="login-profile">
-            <button id="login-submit" type="submit" value="Login" className="login-submit-btn">Log In</button>
+            <button id="login-submit" type="submit" value="Login" className="submit-btn">Log In</button>
           </Link>
           <div className="register">Not registered yet? <Link to="/signup" className="login-signup-link">Create an account</Link></div>
 

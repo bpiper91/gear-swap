@@ -47,7 +47,7 @@ const SingleGroup = () => {
     };
 
     return (
-        <div>
+        <main>
             {loadingGroup &&
                 <div className="group-info">
                     <h1>Loading Group</h1>
@@ -63,7 +63,7 @@ const SingleGroup = () => {
                     {showJoinButton && notInGroup == false && <p>You are a member of this group.</p>}
                 </div>}
             <ListingList groupId={groupId} />
-        </div>
+        </main>
     )
 };
 export default SingleGroup;

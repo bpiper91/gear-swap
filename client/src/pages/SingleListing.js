@@ -70,7 +70,7 @@ const SingleListing = () => {
 
     // if waiting on query data, show loading message
     if (loading) {
-        return (<div><h1>Loading Listing</h1></div>);
+        return (<main><h1>Loading Listing</h1></main>);
     };
 
     if (data) {
@@ -110,7 +110,7 @@ const SingleListing = () => {
         ];
 
         return (
-            <div>
+            <main>
                 <h1>{listing.title}</h1>
                 <h2>Description</h2>
                 {listing.images && listing.images.map((imageURL, index) => (
@@ -137,6 +137,7 @@ const SingleListing = () => {
                 </p>
                 <p>
                     See all of {firstName}'s listings
+
                 </p>
                 { }
                 {swapOffered === false && <button id="swap-button" onClick={offerSwap}>
@@ -170,7 +171,7 @@ const SingleListing = () => {
                         </form>
                     </div>
                 }
-            </div>
+            </main>
         );
     };
 };

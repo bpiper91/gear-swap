@@ -6,15 +6,16 @@ const resolvers = {
     Query: {
         me: async (parent, args, context) => {
             if (context.user) {
-                const userData = await User.findOne({ _id: context.user._id })
+                const token = Auth.getProfile();
+                const myId = token.data._id;
+                const userData = await User.findOne({ _id: myId })
                     .select('-__v -password')
                     .populate('groups')
                     .populate('listings')
                     .populate('activeSwaps')
                     .populate('messages');
                 return userData;
-               
-            }
+            };
 
             throw new AuthenticationError('Must be logged in to do that');
         },
@@ -46,8 +47,10 @@ const resolvers = {
                 .populate('admins');
         },
         listing: async (parent, { _id }) => {
-            return Listing.findOne({ _id })
+            const listing = await Listing.findOne({ _id })
                 .populate('creator');
+
+                return listing;
         },
         listingsDisplay: async (parent, { groupId }, context) => {
             const group = await Group.findOne({ _id: groupId });
@@ -451,17 +454,17 @@ const resolvers = {
         createListing: async (parent, args, context) => {
             if (context.user) {
                 const listing = await Listing.create({ ...args, creator: context.user._id });
-                // const listing = await Listing.create({ ...args, creator: "636198d2be7f9674d305b7e9" }); // for testing
+                //const listing = await Listing.create({ ...args, creator: "6365afef10f1dc4557021a8e" }); // for testing
 
                 await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    // { _id: "636198d2be7f9674d305b7e9"}, // for testing
+                    //{ _id: "6365afef10f1dc4557021a8e"}, // for testing
                     { $push: { listings: listing._id } },
                     { new: true }
                 );
 
                 await Group.findOneAndUpdate(
-                    { _id: args.groupId },
+                    { _id: args.group },
                     { $push: { listings: listing._id } },
                     { new: true }
                 );

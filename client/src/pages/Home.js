@@ -2,7 +2,6 @@ import React from 'react';
 import GroupList from '../components/GroupList';
 import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
-import { Header } from "../components/Header";
 
 const Home = () => {
   const loggedIn = Auth.loggedIn();

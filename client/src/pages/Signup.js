@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { CREATE_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
@@ -101,12 +101,10 @@ const Signup = () => {
     };
 
     return (
-        <main className="login-main">
-            <div className="login-sheet-background"></div>
+        <main>
             <form className="login-sheet" id='signup-form' onSubmit={handleFormSubmit} >
                 <h1 className="login-title">Create an Account</h1>
                 <div id="email-password-wrapper">
-
                     <h4 className="login-epass">* First Name</h4>
                     <input 
                         name="firstname" 
@@ -140,7 +138,7 @@ const Signup = () => {
                         value={signupState.password}
                         onChange={handleFormChange} 
                     />
-                    <h4 className="login-epass">  Location</h4>
+                    <h4 className="login-epass">Location</h4>
                     <input 
                         name="location" 
                         className="login-epass-input" 
@@ -150,10 +148,8 @@ const Signup = () => {
                     />
                 </div>
                 <button id="signup-submit" type="submit" value="Sign Up" className="login-submit-btn">Create Account</button>
-
+                {error && <p>Failed to sign up new user.</p>}
             </form>
-            {error && <p>Failed to sign up new user.</p>}
-            <div className="login-copyright">@2022 Gear Swap™ All rights reserved</div>
         </main>
     )
 };

@@ -168,8 +168,8 @@ export const QUERY_GROUPS_PUBLIC = gql`
 `;
 
 export const QUERY_LISTING = gql`
-    query Listing($id: ID!) {
-        listing(_id: $id) {
+    query Listing($_id: ID!) {
+        listing(_id: $_id) {
             _id
             title
             description
@@ -178,6 +178,7 @@ export const QUERY_LISTING = gql`
                 _id
                 firstName
                 lastName
+                location
                 completedSwaps
             }
             images

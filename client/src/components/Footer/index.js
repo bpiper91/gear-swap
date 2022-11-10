@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="footer-main">
+    <footer>
       <p>
         Powered by Brett Piper, Tien Ngo, Kyle Carter, and Griffin Honeycutt
       </p>

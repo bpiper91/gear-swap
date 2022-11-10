@@ -98,7 +98,6 @@ export const CREATE_GROUP = gql`
         title
         description
         value
-        creator
       }
       owners {
         _id
@@ -190,7 +189,7 @@ export const CREATE_LISTING = gql`
   ) {
     createListing(
       title: $title
-      groupId: $groupId
+      group: $group
       description: $description
       value: $value
     ) {

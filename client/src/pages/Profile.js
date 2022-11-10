@@ -1,7 +1,6 @@
 import React from "react";
-// import CloudinaryUploadWidget from "../CloudinaryUploadWidget";
-// <div className="" id=""></div>
-// <div className=""></div>
+import CreateGroup from "../components/CreateGroup";
+
 const Profile = () => {
     return (
         <main className="profile-main">
@@ -58,6 +57,7 @@ const Profile = () => {
                         <span className="listing-desc" id="listing-desc"></span>
                     </div>
                 </div>
+                <div><CreateGroup/></div>
             </section>        
             </main>
 

@@ -13,7 +13,8 @@ const Header = () => {
     <header>
       <div className="header-wrapper">
         <div className="header-name">
-          <Link to="/">Gear Swap!</Link>
+          <Link className ="navBtn" to="/">Gear Swap!</Link>
+          <img className="swap-img" src="/assets/images/swap.png" alt="swap arrows"></img>
         </div>
         <div className="navBtn-wrapper">
           {!loggedIn && (

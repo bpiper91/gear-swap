@@ -1,5 +1,5 @@
 import React from "react";
-import { gql, useQuery, useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_GROUP } from '../utils/queries';
 import { UPDATE_USER_GROUPS } from '../utils/mutations';
 import Auth from '../utils/auth';
@@ -47,7 +47,7 @@ const SingleGroup = () => {
     };
 
     return (
-        <div>
+        <main>
             {loadingGroup &&
                 <div className="group-info">
                     <h1>Loading Group</h1>
@@ -59,11 +59,11 @@ const SingleGroup = () => {
                     <p>{group.description}</p>
                     {showJoinButton && notInGroup &&
                         <button onClick={joinGroup} id='join-group'>Join Group</button>}
-                    {showJoinButton == false && <p>Create an account or log in to join this group.</p>}
-                    {showJoinButton && notInGroup == false && <p>You are a member of this group.</p>}
+                    {showJoinButton === false && <p>Create an account or log in to join this group.</p>}
+                    {showJoinButton && notInGroup === false && <p>You are a member of this group.</p>}
                 </div>}
             <ListingList groupId={groupId} />
-        </div>
+        </main>
     )
 };
 export default SingleGroup;

@@ -24,7 +24,6 @@ const ListingList = () => {
     <div className="list-main">
       <div className="listing-wrapper">
         <div className="list-title">Available Gear</div>
-        <input type="search" id="gear-input" placeholder="Browse gear" className="group-input" />
         <ul className="list-list">
           {loading && <li><h2>Loading Listings</h2></li>}
           {noListings && <li><h2>No Listings Found.</h2></li>}

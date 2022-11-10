@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import CloudinaryUploadWidget from "../CloudinaryUploadWidget";
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { CREATE_LISTING } from '../utils/mutations';
 import { useNewListingContext } from './utils/GlobalState';
 import { UPDATE_NEW_LISTING_IMAGES } from './utils/actions';

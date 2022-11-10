@@ -59,18 +59,22 @@ const SingleGroup = () => {
     return (
         <main>
            { singleGroupLoading &&
+                <div className="list-main">
                 <div className="group-info">
                     <h1>Loading Group</h1>
+                </div>
                 </div>}
             { singleGroupData &&
+                <div className="list-main">
                 <div>
                     <h1>{singleGroupData.group.groupName}</h1>
                     <p>{singleGroupData.group.location}</p>
                     <p>{singleGroupData.group.description}</p>
-                    <button onClick={joinGroup} id='join-group'>Join Group</button>
-                    <Link to={`/nl/${groupId}`}>
+                    <button onClick={joinGroup} id='join-group' className="profile-btn">Join Group</button>
+                    <Link to={`/nl/${groupId}`} className="profile-btn-link">
                         Create a New Listing in this Group
                     </Link>
+                </div>
                 </div>}
             <ListingList  />
         </main>

@@ -30,6 +30,7 @@ const Profile = () => {
                 <img className="profile-pic" src="/assets/images/defaultprofile.png" alt="profile pic"></img>
                 <div className="profile-info">
                     <ul>
+                        <li><h2>{user.firstName}'s Profile</h2></li>
                         <li>Name: {user.firstName} {user.lastName}</li>
                         <li>Location: {user.location ? `${user.location}` : `No location provided`} </li>
                         {/* <li>Groups: NumberGroups</li> */}

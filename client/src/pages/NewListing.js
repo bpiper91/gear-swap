@@ -115,7 +115,7 @@ const NewListing = () => {
 
     return (
         <main>
-        <div className='new-listing'>
+        <div className='list-main'>
             <h2>Create a New Listing</h2>
             <form id='new-listing-form' onSubmit={handleFormSubmit}>
                 <p>Title:</p>

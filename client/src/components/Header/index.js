@@ -22,7 +22,7 @@ const Header = () => {
               </Link>
             </div>
           )}
-          {/* {loggedIn && ( */}
+          {loggedIn && (
           <div>
             <Link to="/profile" className="navBtn">
               Profile
@@ -31,7 +31,7 @@ const Header = () => {
               Logout
             </button>
           </div>
-          {/* )} */}
+          )}
         </div>
       </div>
     </header>

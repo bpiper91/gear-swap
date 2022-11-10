@@ -144,7 +144,7 @@ const NewListing = () => {
                 ></textarea><br />
                 {/* <p>Image Upload:</p>
                 <CloudinaryUploadWidget /> */}
-                <button type='submit' id='new-listing-btn' value='create-listing'>Create New Listing</button>
+                <button type='submit' id='new-listing-btn' className='profile-btn' value='create-listing'>Create New Listing</button>
             </form>
         </div>
         </main>

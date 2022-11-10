@@ -52,7 +52,7 @@ const resolvers = {
 
                 return listing;
         },
-        listingsDisplay: async (parent, { groupId }, context) => {
+        listingsDisplay: async (parent, { groupId }) => {
             const group = await Group.findOne({ _id: groupId });
 
             let listingsDisplay = [];

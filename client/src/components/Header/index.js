@@ -13,7 +13,7 @@ const Header = () => {
         </div>
         <div className="navBtn-wrapper">
         {!loggedIn && (
-          <div>
+          <div className="signup-login-wrap">
             <Link to="/signup" className="navBtn">
               Sign Up
             </Link>
@@ -23,7 +23,7 @@ const Header = () => {
           </div>
         )}
         {/* {loggedIn && ( */}
-        <div >
+        <div className="signup-login-wrap">
           <Link to="/profile" className="navBtn">
             Profile
           </Link>

@@ -89,7 +89,7 @@ const Login = () => {
         </form>
         {error && <p>Failed to log in user.</p>}
       </div>
-      <div className="login-copyright">@2022 Gear Swap™ All rights reserved</div>
+      <div className="login-copyright-login">@2022 Gear Swap™ All rights reserved</div>
     </div>
     );
 };

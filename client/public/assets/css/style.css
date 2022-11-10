@@ -41,11 +41,6 @@ header a {
     transform: translateY(20%);
 }
 
-.navbar-link a {
-    text-decoration: none;
-    margin-right: 30px;
-    color: black;
-}
 /* Home  */
 .home-main-class{
     background-image: url(../../assets/images/city-background.jpg);
@@ -171,13 +166,17 @@ header a {
 }
 /* Profile */
 .profile-main {
-    height: 100vh;
-    background-color: #b3b3b3;
+    background-color: #484848;
 }
 
 .user-name {
     text-align: center;
     font-size: 40px;
+}
+
+.ugc-wrapper {
+    padding-top: 8vh;
+    height: 74vh;
 }
 
 .user-groups-container {
@@ -187,15 +186,19 @@ header a {
     top: 8vh;
     height: 66vh;
     border: 1px solid black;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
     width: 250px;
 }
 
 .user-groups {
     height: 30vh;
-    width: 250px;
-    border: 1px solid red;
+    width: 100%;
+    border-bottom: 1px solid black;
     overflow-y: hidden;
     overflow-x: hidden;
+    background-color: #aeaeae;
+    border-top-right-radius: 8px;
 }
 
 .user-groups:hover {
@@ -223,8 +226,16 @@ header a {
 }
 
 .user-messages-container {
-    border: 1px solid green;
     height: 36vh;
+    border-bottom-right-radius: 8px;
+    background-color: #aeaeae;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.user-messages-container:hover {
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 .user-messages-title {
@@ -248,13 +259,37 @@ header a {
 }
 
 .active-listings-container {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    border: 1px solid blue;
-    height: 26vh;
     width: 100vw;
 }
+
+.listing-desc,
+.listing-photo,
+.photo-desc-wrapper {
+    border: 1px solid black;
+    width: 400px;
+}
+
+.photo-desc-wrapper {
+    height: 500px;
+}
+
+.listing-photo {
+    height: 300px;
+}
+
+.listing-desc {
+    height: 200px;
+    background-color: white;
+}
+
+.user-listings-title {
+    text-align: center;
+    font-size: 33px;
+    margin-top: 20px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
 /* Signup uses "LOGIN" css styling */
 
 /* Footer */
@@ -358,12 +393,12 @@ ul {
         font-size: 30px;
     }
 
-    .login-signup-wrapper {
+    .navBtn-wrapper {
         font-size: 15px;
     }
 
-    .navbar-link a {
-        margin-right: 10px;
+    .nanBtn {
+        margin-right: 5px;
     }
 
     /* HOMEPAGE */
@@ -379,9 +414,9 @@ ul {
     /* LOGIN */
     .login-sheet-background,
     .login-sheet {
-        height: 90%;
+        height: 70%;
         width: 70%;
-        transform: translate(20%, 10%);
+        transform: translate(20%, 21%);
     }
 
     .login-title {
@@ -408,7 +443,7 @@ ul {
     .remember-me-text,
     .forgot-pass a {
         font-weight: 600;
-        font-size: 15px;
+        font-size: 13px;
     }
 
     .login-copyright {
@@ -416,5 +451,21 @@ ul {
         color: #000000;
         padding-top: 92vh;
         font-size: 10px;
+    }
+
+    .login-copyright-login {
+        text-align: center;
+        color: #000000;
+        padding-top: 80vh;
+        font-size: 10px;
+    }
+
+    .checkbox-text-flex {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .rem-for-flex-container {
+        margin-top: 15px;
     }
 }

@@ -8,6 +8,7 @@ const Profile = () => {
             <div className="user-name" id="user-name">
             <span id="upload-widget-btn"></span>
             </div>
+            <div className="ugc-wrapper w-100">
             <div className="user-groups-container" id="user-groups-container">
                 
                 {/* NEED: display users groups in user-group-list */}
@@ -47,15 +48,40 @@ const Profile = () => {
                     </div>
                 </div>
             </div>
-
-
-            <section className="active-listings-container">
-                <div className="photo-desc-wrapper">
+            </div>
+            {/*ugc-wrapper END*/}
+            <section className="user-listings-title"><i>Your Listings</i></section>
+            <section className="active-listings-container d-flex justify-content-evenly flex-wrap">
+                <div className="photo-desc-wrapper mt-3 mb-3">
                     <div className="listing-photo" id="listing-photo">
                         <span className="listing-photo" id="listing-photo"></span>
                     </div>
                     <div className="listing-desc" id="listing-desc">
                         <span className="listing-desc" id="listing-desc"></span>
+                    </div>
+                </div>
+                <div className="photo-desc-wrapper mt-3 mb-3">
+                    <div className="listing-photo" id="listing-photo">
+                        <span className="listing-photo" id="listing-photo"></span>
+                    </div>
+                    <div className="listing-desc" id="listing-desc">
+                        <span className="listing-desc" id="listing-desc"></span>
+                    </div>
+                </div>
+                <div className="photo-desc-wrapper mt-3 mb-3">
+                    <div className="listing-photo " id="listing-photo">
+                        <span className="listing-photo" id="listing-photo"></span>
+                    </div>
+                    <div className="listing-desc" id="listing-desc">
+                        <span className="listing-desc" id="listing-desc"></span>
+                    </div>
+                </div>
+                <div className="photo-desc-wrapper mt-3 mb-3">
+                    <div className="listing-photo" id="listing-photo">
+                        <span className="listing-photo" id="listing-photo">PHOTO</span>
+                    </div>
+                    <div className="listing-desc" id="listing-desc">
+                        <span className="listing-desc" id="listing-desc">DESCRIPTION</span>
                     </div>
                 </div>
             </section>        
